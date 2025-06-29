@@ -30,6 +30,7 @@ import {
   Circle,
   Download,
   Settings,
+  Quote,
 } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -157,143 +158,114 @@ const testimonials = [
 
 const data = [
   {
-    title: "Analyze the Markets",
+    title: "Choose Your Plan",
     content: (
       <div>
         <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
-          2 hours before the trading day starts, your AI scans 30-day,.
-          <br /> 5-day, and overnight market movement (OHLC).
+          Based on your signal volume and automation needs, each plan is
+          tailored to match different stages of your trade. Whether you're just
+          starting out or already managing funded accounts, there's a plan for
+          you.
         </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="/assets/analysis-1.png"
-            alt="startup template"
-            width={500}
-            height={550}
-            className="h-30 col-span-2 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <div className="w-full">
-            <img
-              src="/assets/analysis-2.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-          </div>
 
-          <div className="w-full h-full max-w-[300px] max-h-[300px]">
-            <img
-              src="/assets/market-analysis-1.webp"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="w-full h-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+        <div className="flex flex-col my-4 text-lg">
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Affordable pricing for all traders
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">Flexible Plans</span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">Cancel Anytime</span>
           </div>
         </div>
-      </div>
-    ),
-  },
-  {
-    title: "Prepare Custom Trade Plans",
-    content: (
-      <div>
-        <p className="mb-8 sm:text-lg text-base font-medium text-neutral-800 dark:text-neutral-200">
-          It audits each account, checks health, and prepares personalized trade
-          plans
-          <br /> based on your prop firm’s goals.
-        </p>
 
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="/assets/report-1.png"
-            alt="hero template"
-            height={550}
-            className="h-30 w-full  col-span-2 rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="/assets/report-2.png"
-            alt="feature template"
-            height={550}
-            className="w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="/assets/report-3.png"
-            alt="bento template"
-            height={550}
-            className="w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          {/* <img
-            src="https://assets.aceternity.com/cards.png"
-            alt="cards template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          /> */}
+        <div className="mt-8">
+          <Button size="lg" className="text-lg px-8 py-6" asChild>
+            <Link href="/pricing">View Pricing</Link>
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </div>
     ),
   },
   {
-    title: "Execute with Smart Risk Management",
+    title: "Download & Install",
     content: (
       <div>
-        <p className="mb-4 sm:text-lg text-base font-medium text-neutral-800 dark:text-neutral-200">
-          The TradeRx system executes trades on your behalf — in real-time —
-          with dynamic risk control
+        <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
+          Once you’ve selected a plan, you’ll receive your software download.
+          <br />
+          Our setup guide walks you through the installation process in under 10
+          minutes.
         </p>
 
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="/assets/exec-report-1.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="/assets/exec-report-2.png"
-            alt="feature template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="/assets/exec-report-3.png"
-            alt="bento template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="/assets/exec-report-4.png"
-            alt="cards template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
+        <div className="flex flex-col my-4 text-lg">
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">Works fully offline</span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              No API key or cloud sync needed
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Installs directly on your machine
+            </span>
+          </div>
+        </div>
+
+        <div className="my-4">
+          <Button size="lg" className="text-lg px-8 py-6" asChild>
+            <Link href="/pricing">Get Started</Link>
+          </Button>
         </div>
       </div>
     ),
   },
   {
-    title: "Post-Trade Analytics",
+    title: "Start Trading With Confidence",
     content: (
       <div>
-        <p className="mb-4 sm:text-lg text-base font-medium text-neutral-800 dark:text-neutral-200">
-          After the session, you get clean, clear analytics so you know what
-          worked and how to improve.
+        <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
+          Your AI gets to work — analyzing, planning, and managing trades
+          intelligently, while keeping you informed.Stay focused. Stay funded.
         </p>
 
-        <div className="grid grid-cols-1 gap-4">
-          <img
-            src="https://assets.aceternity.com/pro/hero-sections.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
+        <div className="flex flex-col my-4 text-lg">
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Pass evaluations with ease
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Manage multiple accounts
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Understand what’s working and why
+            </span>
+          </div>
+        </div>
+
+        <div className="my-4">
+          <Button size="lg" className="text-lg px-8 py-6" asChild>
+            <Link href="/pricing">View Pricing</Link>
+          </Button>
         </div>
       </div>
     ),
@@ -540,17 +512,15 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className=""
+            className="mt-8"
           >
             <motion.div
               variants={fadeInUp}
-              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center"
+              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-6"
             >
               <div className="h-full">
                 <CardHeader>
-                  <div
-                    className={`flex items-center justify-center gap-2 mb-4`}
-                  >
+                  <div className={`flex items-center gap-2 mb-4`}>
                     <Brain className={`h-7 w-7 text-[#EE06DB]`} />
                     <CardTitle className="text-xl">Dr. Markets</CardTitle>
                     <span className="bg-[#08B0FF] rounded-full text-center py-1 px-2 text-white">
@@ -598,7 +568,7 @@ export default function Home() {
 
             <motion.div
               variants={fadeInUp}
-              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center"
+              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-6"
             >
               <div className="bg-[#F6F7F8] p-6 rounded-xl shadow-sm ">
                 <img
@@ -609,9 +579,7 @@ export default function Home() {
               </div>
               <div className="h-full">
                 <CardHeader>
-                  <div
-                    className={`flex items-center justify-center gap-2 mb-4`}
-                  >
+                  <div className={`flex items-center gap-2 mb-4`}>
                     <Zap className={`h-6 w-6 text-[#22D3EE]`} />
                     <CardTitle className="text-xl">TradeRx</CardTitle>
                     <span className="bg-[#08B0FF] rounded-full text-center py-1 px-2 text-white">
@@ -699,7 +667,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How To Section */}
+      {/* How To Get Started Section */}
       <div className="relative w-full overflow-clip">
         <Timeline data={data} />
       </div>
@@ -714,12 +682,13 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <p className="text-[#08B0FF] text-center my-1">REVIEWS</p>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Trusted by Thousands of Traders
+              Success Stories from Real Traders
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See what our community of professional traders has to say about
-              TradePro.
+              Don't just take our word for it. Here's what traders are saying
+              about their journey with TechNests.ai and their prop firm success.
             </p>
           </motion.div>
 
@@ -730,7 +699,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <motion.div key={testimonial.name} variants={fadeInUp}>
                 <Card className="h-full">
                   <CardContent className="pt-6">
@@ -743,7 +712,7 @@ export default function Home() {
                       ))}
                     </div>
                     <p className="text-muted-foreground mb-4">
-                      "{testimonial.content}"
+                     <span><Quote className="h-6 w-6 mr-3 text-[#60A5FA]" /> </span> "{testimonial.content}"
                     </p>
                     <div className="flex items-center">
                       <Avatar className="h-10 w-10 mr-3">
