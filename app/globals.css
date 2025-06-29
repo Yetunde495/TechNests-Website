@@ -92,3 +92,7 @@
 .button-gradient {
   background: var(--button-gradient);
 }
+.pattern-bg {
+  background: url("/assets/pattern-LgbXdP9a.svg.png") no-repeat top center fixed;
+  background-size: 100% 50%;
+}
