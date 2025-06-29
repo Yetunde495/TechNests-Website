@@ -1,119 +1,216 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { 
-  Users, 
-  Target, 
-  Award, 
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Users,
+  Target,
+  Award,
   TrendingUp,
   Shield,
   Zap,
   Globe,
-  ChevronRight
-} from 'lucide-react';
-import Link from 'next/link';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+  ChevronRight,
+  CircleCheckBig,
+} from "lucide-react";
+import Link from "next/link";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const values = [
   {
     icon: Shield,
     title: "Trust & Transparency",
-    description: "We believe in complete transparency with our trading performance and methodologies."
+    description:
+      "We believe in complete transparency with our trading performance and methodologies.",
   },
   {
     icon: Zap,
     title: "Innovation",
-    description: "Constantly pushing the boundaries of what's possible in automated trading technology."
+    description:
+      "Constantly pushing the boundaries of what's possible in automated trading technology.",
   },
   {
     icon: Target,
     title: "Excellence",
-    description: "Committed to delivering exceptional results and exceeding our clients' expectations."
+    description:
+      "Committed to delivering exceptional results and exceeding our clients' expectations.",
   },
   {
     icon: Users,
     title: "Community",
-    description: "Building a supportive community of traders who learn and grow together."
-  }
+    description:
+      "Building a supportive community of traders who learn and grow together.",
+  },
 ];
 
 const stats = [
   { label: "Years in Business", value: "8+" },
   { label: "Active Traders", value: "25,000+" },
   { label: "Countries Served", value: "50+" },
-  { label: "Total Trades Executed", value: "2M+" }
-];
-
-const team = [
-  {
-    name: "Michael Chen",
-    role: "CEO & Founder",
-    bio: "Former Goldman Sachs quantitative analyst with 15+ years in algorithmic trading.",
-    avatar: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-  },
-  {
-    name: "Sarah Johnson",
-    role: "CTO",
-    bio: "MIT PhD in Computer Science, specializing in machine learning and financial markets.",
-    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-  },
-  {
-    name: "David Rodriguez",
-    role: "Head of Trading",
-    bio: "20+ years of trading experience across multiple asset classes and market conditions.",
-    avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-  },
-  {
-    name: "Emily Parker",
-    role: "Head of Research",
-    bio: "Former hedge fund researcher with expertise in quantitative analysis and risk management.",
-    avatar: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-  }
+  { label: "Total Trades Executed", value: "2M+" },
 ];
 
 const milestones = [
   {
     year: "2016",
     title: "Company Founded",
-    description: "Started with a vision to democratize professional-grade trading tools."
+    description:
+      "Started with a vision to democratize professional-grade trading tools.",
   },
   {
     year: "2018",
     title: "First 1,000 Users",
-    description: "Reached our first major milestone with traders from 15 countries."
+    description:
+      "Reached our first major milestone with traders from 15 countries.",
   },
   {
     year: "2020",
     title: "AI Integration",
-    description: "Launched our proprietary AI-powered signal generation system."
+    description:
+      "Launched our proprietary AI-powered signal generation system.",
   },
   {
     year: "2022",
     title: "Mobile Platform",
-    description: "Released award-winning mobile apps for iOS and Android."
+    description: "Released award-winning mobile apps for iOS and Android.",
   },
   {
     year: "2024",
     title: "25,000+ Traders",
-    description: "Celebrating our growing community of successful traders worldwide."
-  }
+    description:
+      "Celebrating our growing community of successful traders worldwide.",
+  },
+];
+
+const content = [
+  {
+    title: "Dr Markets",
+    description:
+      "Your In-house strategist generates pre-market outlooks, daily bias, and high-probability setups using real indicators and professional logic. Think of it as your 6 AM clarity pill",
+    content: (
+      <div className="flex w-full h-full justify-center p-[6%] bg-[#F6F7F8] dark:bg-[#151515BF] text-white">
+        <div className="flex w-full flex-col py-8 rounded-xl px-6 text-base border bg-[#011D3A] border-[#00DCF1]">
+          <h4 className="text-[#08B0FF] text-lg mb-3">Daily Operations</h4>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Scans trades and performance trends
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Analyzes market behavior patterns
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Refines signal selection and prioritization
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Adapts underperforming signals
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Recalibrates for volatility changes
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Delivers focused Plan of Action (POA)
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "TradeRx",
+    description:
+      "Your emotion-free execution engine. Reads signals, manages trades, enforces firm rules, respects cooldowns, and never chases no matter what",
+    content: (
+      <div className="flex w-full h-full justify-center p-[6%] bg-[#F6F7F8] dark:bg-[#151515BF] text-white">
+        <div className="flex flex-col w-full py-8 px-6 rounded-xl text-sm border bg-[#011D3A] border-[#00DCF1]">
+          <h4 className="text-[#08B0FF] text-lg mb-3">
+            Diagnostic Capabilities
+          </h4>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">Risk drift detection</span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              SL/TP inefficiency analysis
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">Overtrading patterns</span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Time-of-day performance
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Signal reliability assessment
+            </span>
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <CircleCheckBig className=" text-[#17C964]" />
+            <span className="text-muted-foreground">
+              Data-driven calibration
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "You-The human in control",
+    description:
+      "Define your edges. Set your risk rules, then let our bots do the heavy lifting, day in day out.",
+    content: (
+      <div className="flex w-full h-full justify-center p-[6%] bg-[#F6F7F8] dark:bg-[#151515BF] text-white">
+        <div className="flex flex-col w-full py-8 px-6 text-sm rounded-xl border bg-[#011D3A] border-[#00DCF1]">
+          <img src="/assets/trading.png" alt="" className="rounded-xl" />
+        </div>
+      </div>
+    ),
+  },
 ];
 
 export default function About() {
@@ -138,8 +235,9 @@ export default function About() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Founded in 2016, TradePro has grown from a small startup to a global leader 
-              in automated trading solutions, serving over 25,000 traders worldwide.
+              Founded in 2016, TradePro has grown from a small startup to a
+              global leader in automated trading solutions, serving over 25,000
+              traders worldwide.
             </p>
           </motion.div>
         </div>
@@ -156,7 +254,11 @@ export default function About() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {stats.map((stat, index) => (
-              <motion.div key={stat.label} variants={fadeInUp} className="text-center">
+              <motion.div
+                key={stat.label}
+                variants={fadeInUp}
+                className="text-center"
+              >
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                   {stat.value}
                 </div>
@@ -179,18 +281,20 @@ export default function About() {
             >
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Story</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                TradePro was born from a simple observation: retail traders deserved access 
-                to the same sophisticated tools and strategies that institutional investors 
-                had been using for decades.
+                TradePro was born from a simple observation: retail traders
+                deserved access to the same sophisticated tools and strategies
+                that institutional investors had been using for decades.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Our founder, Michael Chen, spent over a decade at Goldman Sachs developing 
-                quantitative trading algorithms. Frustrated by the lack of accessible, 
-                professional-grade tools for individual traders, he set out to change the industry.
+                Our founder, Michael Chen, spent over a decade at Goldman Sachs
+                developing quantitative trading algorithms. Frustrated by the
+                lack of accessible, professional-grade tools for individual
+                traders, he set out to change the industry.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Today, we're proud to serve thousands of traders worldwide, helping them 
-                achieve consistent profitability through our advanced AI-powered platform.
+                Today, we're proud to serve thousands of traders worldwide,
+                helping them achieve consistent profitability through our
+                advanced AI-powered platform.
               </p>
               <Button size="lg" asChild>
                 <Link href="/subscription">
@@ -199,7 +303,7 @@ export default function About() {
                 </Link>
               </Button>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -229,7 +333,8 @@ export default function About() {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Values</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              These core principles guide everything we do and shape how we serve our community.
+              These core principles guide everything we do and shape how we
+              serve our community.
             </p>
           </motion.div>
 
@@ -271,9 +376,12 @@ export default function About() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Meet Our Team</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Meet Our Team
+            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our experienced team combines decades of trading expertise with cutting-edge technology.
+              Our experienced team combines decades of trading expertise with
+              cutting-edge technology.
             </p>
           </motion.div>
 
@@ -282,23 +390,11 @@ export default function About() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className=""
           >
-            {team.map((member, index) => (
-              <motion.div key={member.name} variants={fadeInUp}>
-                <Card className="text-center">
-                  <CardContent className="pt-6">
-                    <Avatar className="h-24 w-24 mx-auto mb-4">
-                      <AvatarImage src={member.avatar} alt={member.name} />
-                      <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                    <p className="text-primary font-medium mb-3">{member.role}</p>
-                    <p className="text-sm text-muted-foreground">{member.bio}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <div className="w-full py-4">
+              <StickyScroll content={content} />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -336,10 +432,14 @@ export default function About() {
                   </div>
                   <Card className="flex-1">
                     <CardHeader>
-                      <CardTitle className="text-xl">{milestone.title}</CardTitle>
+                      <CardTitle className="text-xl">
+                        {milestone.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">{milestone.description}</p>
+                      <p className="text-muted-foreground">
+                        {milestone.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </div>

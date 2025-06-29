@@ -154,6 +154,15 @@ const testimonials = [
       "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
     rating: 5,
   },
+  {
+    name: "Emma Thompson",
+    role: "Day Trader",
+    content:
+      "Best investment I've made for my trading career. ROI was immediate.",
+    avatar:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+    rating: 5,
+  },
 ];
 
 const data = [
@@ -186,10 +195,13 @@ const data = [
         </div>
 
         <div className="mt-8">
-          <Button size="lg" className="text-lg px-8 py-6" asChild>
-            <Link href="/pricing">View Pricing</Link>
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <Link
+            className="button-gradient py-4 flex justify-center text-center text-white text-lg font-semibold max-w-[300px] gap-1 group items-center px-6 rounded-md"
+            href="/pricing"
+          >
+            View Pricing{" "}
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 duration-150" />
+          </Link>
         </div>
       </div>
     ),
@@ -224,10 +236,14 @@ const data = [
           </div>
         </div>
 
-        <div className="my-4">
-          <Button size="lg" className="text-lg px-8 py-6" asChild>
-            <Link href="/pricing">Get Started</Link>
-          </Button>
+        <div className="mt-8">
+          <Link
+            className="button-gradient py-4 flex justify-center text-center text-white text-lg font-semibold max-w-[300px] gap-1 group items-center px-6 rounded-md"
+            href="/pricing"
+          >
+            Get Started{" "}
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 duration-150" />
+          </Link>
         </div>
       </div>
     ),
@@ -262,15 +278,21 @@ const data = [
           </div>
         </div>
 
-        <div className="my-4">
-          <Button size="lg" className="text-lg px-8 py-6" asChild>
-            <Link href="/pricing">View Pricing</Link>
-          </Button>
+        <div className="mt-8">
+          <Link
+            className="button-gradient py-4 flex justify-center text-center text-white text-lg font-semibold max-w-[300px] gap-1 group items-center px-6 rounded-md"
+            href="/pricing"
+          >
+            View Pricing{" "}
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 duration-150" />
+          </Link>
         </div>
       </div>
     ),
   },
 ];
+
+
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -293,7 +315,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center"
           >
             <div className="flex items-center justify-center gap-2.5 max-sm:gap-1">
@@ -346,10 +368,10 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center mt-12"
           >
-            <div className="w-full max-w-5xl 2xl:max-w-6xl relative max-h-[650px]">
+            <div className="w-full max-w-6xl 2xl:max-w-7xl rounded-xl relative">
               <video
                 ref={videoRef}
-                className="w-full h-full rounded-2xl shadow-lg"
+                className="w-full h-full rounded-2xl shadow-lg max-h-[500px] object-cover"
                 controls
                 poster="/assets/stock-1863880_1920.jpg"
                 src="/assets/Trading-Video.mp4"
@@ -396,7 +418,7 @@ export default function Home() {
                   <div className="flex justify-center items-center h-14 w-14 rounded-xl p-2 button-gradient text-white mb-2">
                     <stat.icon className="h-8 w-8" />
                   </div>
-                  <div className="text-3xl font-bold text-foreground">
+                  <div className="md:text-3xl text-xl font-bold text-foreground">
                     {stat.value}
                   </div>
                   <div className="text-muted-foreground">{stat.label}</div>
@@ -416,7 +438,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -437,6 +459,7 @@ export default function Home() {
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
+            transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
@@ -464,20 +487,21 @@ export default function Home() {
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
+            transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
-            className="flex flex-col w-full justify-center items-center my-10 gap-6 bg-[#F6F7F8] dark:bg-[#151515BF] p-5 rounded-lg"
+            className="flex flex-col w-full justify-center items-center py-12 my-10 gap-4 bg-[#F6F7F8] dark:bg-[#151515BF] p-5 rounded-lg"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold">
               Ready to Elevate your Trading Success?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-center text-muted-foreground max-w-3xl mx-auto">
               Join other traders around the world who have passed their prop
               firm evaluations with TechNests
             </p>
             <div>
               <Button size="lg" className="text-lg px-8 py-6 mt-6" asChild>
                 <Link href="/subscription">
-                  Start Your Free Trial
+                  Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -492,9 +516,9 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-24"
           >
             <p className="text-[#08B0FF] text-center my-1">TechNest Tools</p>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -511,12 +535,14 @@ export default function Home() {
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="mt-8"
+            className=""
           >
             <motion.div
               variants={fadeInUp}
-              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-6"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-12"
             >
               <div className="h-full">
                 <CardHeader>
@@ -568,7 +594,8 @@ export default function Home() {
 
             <motion.div
               variants={fadeInUp}
-              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-6"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-12"
             >
               <div className="bg-[#F6F7F8] p-6 rounded-xl shadow-sm ">
                 <img
@@ -624,7 +651,8 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="flex flex-col w-full justify-center items-center my-10 gap-6 bg-[#F6F7F8] dark:bg-[#151515BF] p-5 rounded-lg"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col w-full justify-center items-center my-20 gap-6 bg-[#F6F7F8] dark:bg-[#151515BF] px-5 py-10 rounded-lg"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Why Local Execution Matters
@@ -697,41 +725,48 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             {testimonials.map((testimonial) => (
               <motion.div key={testimonial.name} variants={fadeInUp}>
                 <Card className="h-full">
-                  <CardContent className="pt-6">
-                    <div className="flex mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground mb-4">
-                     <span><Quote className="h-6 w-6 mr-3 text-[#60A5FA]" /> </span> "{testimonial.content}"
+                  <CardContent className="py-6 flex flex-col h-full justify-between">
+                    <p className="text-muted-foreground mb-4 flex items-start">
+                      <span>
+                        <Quote className="h-6 w-6 mr-3 text-[#60A5FA]" />{" "}
+                      </span>{" "}
+                      "{testimonial.content}"
                     </p>
-                    <div className="flex items-center">
-                      <Avatar className="h-10 w-10 mr-3">
-                        <AvatarImage
-                          src={testimonial.avatar}
-                          alt={testimonial.name}
-                        />
-                        <AvatarFallback>
-                          {testimonial.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="font-semibold">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">
-                          {testimonial.role}
+                    <div className="flex justify-between relative -bottom-3 mb-5 items-center flex-wrap gap-3">
+                      <div className="flex items-center">
+                        <Avatar className="h-10 w-10 mr-3">
+                          <AvatarImage
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                          />
+                          <AvatarFallback>
+                            {testimonial.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <div className="font-semibold">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {testimonial.role}
+                          </div>
                         </div>
+                      </div>
+                      <div className="flex mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                          />
+                        ))}
                       </div>
                     </div>
                   </CardContent>
@@ -744,11 +779,11 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center bg-[#F6F7F8] dark:bg-[#151515BF] py-[7%] px-[5%] rounded-2xl border dark:border-zinc-800 border-zinc-300">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
             <h1 className="text-center md:text-5xl font-bold text-4xl text-slate-900 dark:text-white tracking-tight mb-6">
@@ -763,7 +798,7 @@ export default function Home() {
               trading with TechNests.ai. Get the discipline, structure, and
               AI-powered insights you need to succeed.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-5">
+            <div className="flex justify-center items-center grid-cols-1 gap-5 w-full">
               <div className="flex items-center text-sm justify-center gap-1 text-center">
                 <CircleCheck className="text-[#17C964]" />
 
@@ -786,7 +821,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center py-8">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
                 <Link href="/subscription">
                   Start Your Free Trial
