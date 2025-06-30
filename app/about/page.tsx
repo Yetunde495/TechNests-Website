@@ -20,9 +20,14 @@ import {
   Globe,
   ChevronRight,
   CircleCheckBig,
+  LucideRocket,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import { cn } from "@/lib/utils";
+import { ContainerTextFlip } from "@/components/ui/container-text-flip";
+import { OverlayCopy, StickyDiv } from "@/components/ui/testScroll";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -110,41 +115,41 @@ const content = [
     description:
       "Your In-house strategist generates pre-market outlooks, daily bias, and high-probability setups using real indicators and professional logic. Think of it as your 6 AM clarity pill",
     content: (
-      <div className="flex w-full h-full justify-center p-[6%] bg-[#F6F7F8] dark:bg-[#151515BF] text-white">
-        <div className="flex w-full flex-col py-8 rounded-xl px-6 text-base border bg-[#011D3A] border-[#00DCF1]">
+      <div className="flex w-full h-full justify-center p-[6%] max-sm:px-1.5 bg-[#F6F7F8] dark:bg-[#151515BF] text-white">
+        <div className="flex w-full flex-col py-8 rounded-xl sm:px-6 px-1 text-sm sm:text-base border bg-[#011D3A] border-[#00DCF1]">
           <h4 className="text-[#08B0FF] text-lg mb-3">Daily Operations</h4>
           <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
+            <CircleCheckBig className="h-3 w-3 text-[#17C964]" />
             <span className="text-muted-foreground">
               Scans trades and performance trends
             </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
+            <CircleCheckBig className="h-3 w-3 text-[#17C964]" />
             <span className="text-muted-foreground">
               Analyzes market behavior patterns
             </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
+            <CircleCheckBig className="h-3 w-3 text-[#17C964]" />
             <span className="text-muted-foreground">
               Refines signal selection and prioritization
             </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
+            <CircleCheckBig className="h-3 w-3 text-[#17C964]" />
             <span className="text-muted-foreground">
               Adapts underperforming signals
             </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
+            <CircleCheckBig className="h-3 w-3 text-[#17C964]" />
             <span className="text-muted-foreground">
               Recalibrates for volatility changes
             </span>
           </div>
           <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
+            <CircleCheckBig className="h-3 w-3 text-[#17C964]" />
             <span className="text-muted-foreground">
               Delivers focused Plan of Action (POA)
             </span>
@@ -206,7 +211,11 @@ const content = [
     content: (
       <div className="flex w-full h-full justify-center p-[6%] bg-[#F6F7F8] dark:bg-[#151515BF] text-white">
         <div className="flex flex-col w-full py-8 px-6 text-sm rounded-xl border bg-[#011D3A] border-[#00DCF1]">
-          <img src="/assets/trading.png" alt="" className="rounded-xl" />
+          <img
+            src="/assets/trading.png"
+            alt=""
+            className="rounded-xl w-full h-full object-cover"
+          />
         </div>
       </div>
     ),
@@ -214,6 +223,7 @@ const content = [
 ];
 
 export default function About() {
+  const words = ["winning", "trading"];
   return (
     <div className="min-h-screen pt-24">
       {/* Hero Section */}
@@ -226,75 +236,82 @@ export default function About() {
           >
             <Badge variant="outline" className="mb-4 px-4 py-2">
               <Globe className="w-4 h-4 mr-2" />
-              About TradePro
+              About Technests
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Revolutionizing Trading
-              <span className="block bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
-                Through Technology
-              </span>
-            </h1>
+            <motion.h1
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+              }}
+              className={cn(
+                "relative mb-6 text-center text-4xl leading-normal font-bold tracking-tight md:text-7xl"
+              )}
+              layout
+            >
+              <div className="inline-block">
+                We Build Bots. You Focus on <ContainerTextFlip words={words} />
+                {/* <Blips /> */}
+              </div>
+            </motion.h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Founded in 2016, TradePro has grown from a small startup to a
-              global leader in automated trading solutions, serving over 25,000
-              traders worldwide.
+              TechNests is the mission-driven, trader-first AI automation
+              company empowering evaluation and funded traders to win —
+              consistently, confidently, and without burnout.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      {/* Our Mission Section */}
+      <section className="py-6 px-2 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="text-center gap-4"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                variants={fadeInUp}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </motion.div>
-            ))}
+            <LucideRocket className="mx-auto mb-4 text-[#08B0FF]" size={40} />
+            <h2 className="md:text-2xl text-lg font-bold mb-2">OUR MISSION</h2>
+            <p className="md:text-lg text-sm pb-4">
+              To unlock sustainable success for prop firm traders through
+              intelligent automation, <br /> removing guesswork, enhancing
+              discipline, and enabling payouts.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Why TechNests Exists Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-16">
+        <div className="max-w-7xl mx-auto flex justify-center items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 bg-[#F6F7F8] dark:bg-[#151515BF] rounded-3xl gap-6 items-center max-w-full">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="space-y-4 px-[5%] py-28 max-sm:pt-4 max-sm:pb-10 max-sm:order-last"
             >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Story</h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                TradePro was born from a simple observation: retail traders
-                deserved access to the same sophisticated tools and strategies
-                that institutional investors had been using for decades.
+              <h2 className="text-xl md:text-3xl font-bold">
+                WHY TECHNESTS EXISTS
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Today, over 90% of traders fail prop firm evaluations.{" "}
+                <strong>Not</strong> because they’re undisciplined.{""}
+                <strong>Not</strong> because they lack edge.
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                Our founder, Michael Chen, spent over a decade at Goldman Sachs
-                developing quantitative trading algorithms. Frustrated by the
-                lack of accessible, professional-grade tools for individual
-                traders, he set out to change the industry.
+              <p className="text-sm text-muted-foreground">
+                But because the evaluation process demands precision,
+                consistency, and emotional control — every single day.
               </p>
-              <p className="text-lg text-muted-foreground mb-8">
-                Today, we're proud to serve thousands of traders worldwide,
-                helping them achieve consistent profitability through our
-                advanced AI-powered platform.
+              <p className="text-sm text-muted-foreground mb-4">
+                We’ve walked this path. That’s why we built TechNests: a
+                full-stack automation system engineered for the{" "}
+                <em>real-world chaos</em> of prop trading.
               </p>
               <Button size="lg" asChild>
                 <Link href="/subscription">
@@ -305,21 +322,59 @@ export default function About() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-500 to-emerald-500 p-1">
-                <div className="w-full h-full rounded-xl bg-background flex items-center justify-center">
-                  <TrendingUp className="h-32 w-32 text-primary" />
-                </div>
-              </div>
-            </motion.div>
+              className="w-full h-full flex items-center justify-center max-sm:order-1 max-sm:rounded-t-xl sm:rounded-r-xl py-20 md:py-28 px-[5%] overflow-hidden"
+              style={{
+                backgroundImage: `url('/assets/technest-bot.png')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></motion.div>
           </div>
         </div>
       </section>
+
+      {/* What makes us different */}
+
+      <div className="py-[12%] relative">
+        <StickyDiv imgUrl={"/assets/technest-bot.png"} />
+        <OverlayCopy>
+          <p className="text-[#08B0FF] text-center my-1">
+            WHAT MAKES US DIFFERENT
+          </p>
+          <h2 className="text-lg text-center md:text-3xl font-bold mb-2">
+            We’re your trading brain — in a box.
+          </h2>
+           <p className="text-center md:text-lg mb-5">
+              No Copy trading. No central signal farm. No cloud execution. Just
+              1:1 automation that works exactly like <strong>you</strong> — only
+              better{" "}
+            </p>
+          <section className="w-full flex flex-col justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-6 max-w-4xl">
+              <div className="flex-1 p-6 rounded-lg shadow text-lg ">
+                <p>
+                  TechNests is not just another trading tool. We’re not a signal
+                  provider, marketplace, or brokerage. We’re your{" "}
+                  <strong>personal trading assistant</strong> — built to enhance
+                  your edge, discipline, and performance.
+                </p>
+              </div>
+              <div className="flex-1 p-6 rounded-lg shadow text-lg ">
+                <p>
+                  Our bots are designed to run locally, follow your firm’s
+                  rules, and execute trades without ego or exhaustion. They
+                  adapt to your unique style and preferences, ensuring you stay
+                  in control at all times.
+                </p>
+              </div>
+            </div>
+           
+          </section>
+        </OverlayCopy>
+      </div>
 
       {/* Values Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">

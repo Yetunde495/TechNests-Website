@@ -83,7 +83,9 @@
     @apply bg-background text-foreground;
   }
 }
-
+.primary-gradient {
+  background: linear-gradient(91.13deg, #EE06DB 43.65%, #802ABC 56.99%, #08B0FF 73.07%, #00F0FF 89.13%);
+}
 .gradient-text {
   -webkit-background-clip: text;
   background-clip: text;
