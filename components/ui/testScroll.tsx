@@ -27,7 +27,7 @@ export const StickyDiv = ({ imgUrl }: { imgUrl: string }) => {
   return (
     <motion.div
       style={{
-        backgroundImage: `url("/assets/trading.png")`,
+        backgroundImage: `url("/assets/trading-bot.webp")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: `calc(100vh - ${IMG_PADDING * 2}px)`,
@@ -35,7 +35,7 @@ export const StickyDiv = ({ imgUrl }: { imgUrl: string }) => {
         scale,
       }}
       ref={targetRef}
-      className="sticky z-0 overflow-hidden bg-black/80 bg-blend-overlay  w-full"
+      className="sticky z-0 overflow-hidden bg-black/50 bg-blend-soft-light  w-full"
     >
       <motion.div
         className="absolute inset-0 bg-transparent"

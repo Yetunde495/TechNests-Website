@@ -31,6 +31,7 @@ import {
   Download,
   Settings,
   Quote,
+  User,
 } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -167,132 +168,62 @@ const testimonials = [
 
 const data = [
   {
-    title: "Choose Your Plan",
+    title: "Choose your prop firm and rules",
     content: (
       <div>
         <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
-          Based on your signal volume and automation needs, each plan is
-          tailored to match different stages of your trade. Whether you're just
-          starting out or already managing funded accounts, there's a plan for
-          you.
+          Select your evaluation or funded prop firm (like Apex or Topstep),
+          then input your trading rules — including daily loss limits, targets,
+          and max positions.
         </p>
-
-        <div className="flex flex-col my-4 text-lg">
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">
-              Affordable pricing for all traders
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">Flexible Plans</span>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">Cancel Anytime</span>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <Link
-            className="button-gradient py-4 flex justify-center text-center text-white text-lg font-semibold max-w-[300px] gap-1 group items-center px-6 rounded-md"
-            href="/pricing"
-          >
-            View Pricing{" "}
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 duration-150" />
-          </Link>
-        </div>
       </div>
     ),
   },
   {
-    title: "Download & Install",
+    title: "Configure your preferences",
     content: (
       <div>
         <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
-          Once you’ve selected a plan, you’ll receive your software download.
-          <br />
-          Our setup guide walks you through the installation process in under 10
-          minutes.
+          Customize how your bot behaves: define entry signals, risk levels,
+          trade sessions, and preferred instruments. Make it yours.{" "}
         </p>
-
-        <div className="flex flex-col my-4 text-lg">
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">Works fully offline</span>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">
-              No API key or cloud sync needed
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">
-              Installs directly on your machine
-            </span>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <Link
-            className="button-gradient py-4 flex justify-center text-center text-white text-lg font-semibold max-w-[300px] gap-1 group items-center px-6 rounded-md"
-            href="/pricing"
-          >
-            Get Started{" "}
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 duration-150" />
-          </Link>
-        </div>
       </div>
     ),
   },
   {
-    title: "Start Trading With Confidence",
+    title: "Plug into NinjaTrader",
     content: (
       <div>
         <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
-          Your AI gets to work — analyzing, planning, and managing trades
-          intelligently, while keeping you informed.Stay focused. Stay funded.
+          Connect the TechNests automation engine to NinjaTrader on your local
+          machine. No cloud, no delays — just direct execution.{" "}
         </p>
-
-        <div className="flex flex-col my-4 text-lg">
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">
-              Pass evaluations with ease
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">
-              Manage multiple accounts
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <CircleCheckBig className=" text-[#17C964]" />
-            <span className="text-muted-foreground">
-              Understand what’s working and why
-            </span>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <Link
-            className="button-gradient py-4 flex justify-center text-center text-white text-lg font-semibold max-w-[300px] gap-1 group items-center px-6 rounded-md"
-            href="/pricing"
-          >
-            View Pricing{" "}
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 duration-150" />
-          </Link>
-        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Trade with precision — hands-free",
+    content: (
+      <div>
+        <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
+          Let the bot manage entries, exits, cooldowns, and rules without
+          emotion or fatigue. Your strategy, automated.{" "}
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "Collect, review logs, optimize — repeat",
+    content: (
+      <div>
+        <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
+          Access detailed trading logs, performance stats, and session
+          summaries. Refine your approach and scale confidently.{" "}
+        </p>
       </div>
     ),
   },
 ];
-
-
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -318,7 +249,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center"
           >
-            <div className="flex items-center justify-center gap-2.5 max-sm:gap-1">
+            <div className="flex items-center flex-wrap justify-center gap-1 sm:gap-2.5 max-sm:gap-1">
               <Badge variant="outline" className="mb-4 p-1 sm:px-4 sm:py-2">
                 <Shield className="w-4 h-4 mr-2 text-[#08B0FF]" />
                 Privacy First
@@ -510,8 +441,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* Ecosystem Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -520,11 +451,13 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <p className="text-[#08B0FF] text-center my-1">TechNest Tools</p>
+            <p className="text-[#08B0FF] text-center my-1 uppercase">
+              The TechNests Ecosystem
+            </p>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Trade Smarter, Grow Faster
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto">
               A complete AI trading system that runs locally on your computer.
               No internet required. No data shared. Just pure trading
               intelligence.
@@ -547,18 +480,19 @@ export default function Home() {
               <div className="h-full">
                 <CardHeader>
                   <div className={`flex items-center gap-2 mb-4`}>
-                    <Brain className={`h-7 w-7 text-[#EE06DB]`} />
-                    <CardTitle className="text-xl">Dr. Markets</CardTitle>
-                    <span className="bg-[#08B0FF] rounded-full text-center py-1 px-2 text-white">
+                    <Brain className={`h-6 w-6 text-[#EE06DB]`} />
+                    <CardTitle className="md:text-xl text-lg">
+                      Dr. Markets
+                    </CardTitle>
+                    <span className="bg-[#08B0FF] rounded-full max-sm:text-sm text-center py-1 px-2 text-white">
                       Analysis Engine
                     </span>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">
-                    Your AI market analyst that processes price action, volume,
-                    and market structure to identify high-probability trading
-                    opportunities.
+                    Generates pre-market outlooks, daily bias, and setups using
+                    real indicators and professional logic.
                   </CardDescription>
 
                   <div className="flex flex-col mt-4">
@@ -608,17 +542,18 @@ export default function Home() {
                 <CardHeader>
                   <div className={`flex items-center gap-2 mb-4`}>
                     <Zap className={`h-6 w-6 text-[#22D3EE]`} />
-                    <CardTitle className="text-xl">TradeRx</CardTitle>
-                    <span className="bg-[#08B0FF] rounded-full text-center py-1 px-2 text-white">
+                    <CardTitle className="md:text-xl text-lg">
+                      TradeRx
+                    </CardTitle>
+                    <span className="bg-[#08B0FF] max-sm:text-sm rounded-full text-center py-1 px-2 text-white">
                       Execution Engine
                     </span>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base">
-                    Your disciplined execution partner that follows your rules
-                    exactly, eliminates emotional trading, and maintains
-                    consistent risk management.
+                    Emotion-free execution engine that respects rules, manages
+                    trades, and never chases.
                   </CardDescription>
 
                   <div className="flex flex-col mt-4">
@@ -644,61 +579,68 @@ export default function Home() {
                 </CardContent>
               </div>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col w-full justify-center items-center my-20 gap-6 bg-[#F6F7F8] dark:bg-[#151515BF] px-5 py-10 rounded-lg"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Why Local Execution Matters
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              In an age where your data is everywhere, TechNests.ai keeps your
-              trading strategies, performance data, and market insights
-              completely private.
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-5">
-              <div className="flex items-center justify-center space-y-2.5 flex-col text-center">
-                <Shield className="text-[#17C964] w-10 h-10" />
-                <h6 className="font-bold md:text-xl text-lg text-zinc-900 dark:text-white">
-                  Complete Privacy
-                </h6>
-                <p className="text-base text-[#374758] dark:text-zinc-100">
-                  Your strategies and data never leave your computer
-                </p>
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="grid md:grid-cols-2 grid-cols-1 gap-6 items-center mb-12"
+            >
+              <div className="h-full">
+                <CardHeader>
+                  <div className={`flex items-center gap-2 mb-4`}>
+                    <User className={`h-6 w-6 text-[#EE06DB]`} />
+                    <CardTitle className="md:text-xl text-lg">You</CardTitle>
+                    <span className="bg-[#08B0FF] max-sm:text-sm rounded-full text-center py-1 px-2 text-white">
+                      The human in control
+                    </span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    You define your edge and risk. Our bots handle the rest.
+                  </CardDescription>
+
+                  <div className="flex flex-col mt-4">
+                    <div className="flex items-center gap-2 mt-2">
+                      <Circle className="h-3 w-3 text-[#08B0FF]" />
+                      <span className="text-muted-foreground">
+                        Multi-timeframe analysis
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-2">
+                      <Circle className="h-3 w-3 text-[#08B0FF]" />
+                      <span className="text-muted-foreground">
+                        Risk assessment and position sizing
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-2">
+                      <Circle className="h-3 w-3 text-[#08B0FF]" />
+                      <span className="text-muted-foreground">
+                        Market condition detection
+                      </span>
+                    </div>
+                  </div>
+                </CardContent>
               </div>
-              <div className="flex items-center justify-center space-y-2.5 flex-col text-center">
-                <Download className="text-[#00DCF1] w-10 h-10" />
-                <h6 className="font-bold md:text-xl text-lg text-zinc-900 dark:text-white">
-                  No Internet Required
-                </h6>
-                <p className="text-base text-[#374758] dark:text-zinc-100">
-                  Trade even when your connection is unreliable
-                </p>
+              <div className="bg-[#F6F7F8] p-6 rounded-xl shadow-sm ">
+                <img
+                  src={"/assets/human-trader.jpg"}
+                  alt="Dr. Markets"
+                  height={400}
+                  className="w-full max-h-[300px] object-cover rounded-lg"
+                />
               </div>
-              <div className="flex items-center justify-center space-y-2.5 flex-col text-center">
-                <Settings className="text-[#CD12DF] w-10 h-10" />
-                <h6 className="font-bold md:text-xl text-lg text-zinc-900 dark:text-white">
-                  Full Control
-                </h6>
-                <p className="text-base text-[#374758] dark:text-zinc-100">
-                  Customize everything to match your trading style
-                </p>
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* How To Get Started Section */}
-      <div className="relative w-full overflow-clip">
-        <Timeline data={data} />
-      </div>
+      {/* How Technest Works Section */}
+      <section className="relative w-full bg-muted/50 overflow-clip ">
+        <div className="max-w-6xl mx-auto">
+          <Timeline data={data} />
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
@@ -786,7 +728,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <h1 className="text-center md:text-5xl font-bold text-4xl text-slate-900 dark:text-white tracking-tight mb-6">
+            <h1 className="text-center text-3xl font-bold md:text-4xl text-slate-900 dark:text-white tracking-tight mb-6">
               Ready to Pass Your Next
               <br />
               <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">

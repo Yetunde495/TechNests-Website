@@ -34,41 +34,43 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
+      className="w-full font-sans md:px-10"
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto pt-20 px-4 md:px-8 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="text-[#08B0FF] text-center my-1">HOW TO GET STARTED</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            How to Get Started With AI-Powered Trader
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Getting started with TechNests AI is quick and seamless. Whether
-            you're a beginner or a seasoned prop trader, our platform is
-            designed to give you immediate access to high-quality, AI-driven
-            trading signals
-          </p>
-        </motion.div>
+       <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-[#08B0FF] text-center my-1">
+              HOW TECHNESTS WORKS
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              From Setup To Payout in Five Simple, Stress-free Steps.
+            </h2>
+            <p className="md:text-xl text-muted-foreground">
+              TechNests turns your trading rules into automated routines.
+              Whether you're running evaluations or funded accounts, our system
+              simplifies the process — so you can trade smarter, stay compliant,
+              and focus on growth.
+            </p>
+          </motion.div>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
+            className="flex justify-start pt-10 md:pt-20 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-xl md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full button-gradient text-white text-2xl flex items-center justify-center">
                 <span>{index + 1}</span>
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500 ">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-neutral-500 dark:text-neutral-500 ">
                 {item.title}
               </h3>
             </div>
