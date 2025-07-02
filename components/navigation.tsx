@@ -54,9 +54,9 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <TrendingUp className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-              TradePro
+            <img src="/assets/logo.svg" className="h-8 w-8 text-primary" />
+            <span className="text-xl font-bold gradient-text !bg-clip-text text-transparent py-1">
+              technests
             </span>
           </Link>
 

@@ -32,6 +32,7 @@ import {
   Circle,
   User,
   CircleUser,
+  Calendar,
 } from "lucide-react";
 import Link from "next/link";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
@@ -41,6 +42,7 @@ import { OverlayCopy, StickyDiv } from "@/components/ui/testScroll";
 import { Timeline } from "@/components/ui/timeline";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Avatar } from "@/components/ui/avatar";
+import { blogPosts } from "@/data/mockdata";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -196,7 +198,7 @@ const testimonials = [
 export default function About() {
   const words = ["winning", "trading"];
   return (
-    <div className="min-h-screen pt-24">
+    <div className="min-h-screen pt-24 lg:px-[5%]">
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
@@ -716,6 +718,96 @@ export default function About() {
           </motion.div>
         </div>
       </section>
+
+       {/* Blog Posts Grid */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="mb-12"
+                >
+                  <h2 className="text-3xl md:text-5xl font-bold mb-5">Latest Blog Posts</h2>
+                </motion.div>
+      
+                <motion.div
+                  variants={staggerContainer}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {blogPosts.map((post, index) => (
+                    <motion.div key={post.id} variants={fadeInUp}>
+                      <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                        <div className="aspect-video bg-muted">
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover rounded-t-lg"
+                          />
+                        </div>
+                        <CardHeader>
+                          <Badge variant="outline" className="w-fit mb-2">
+                            {post.category}
+                          </Badge>
+                          <CardTitle className="text-lg">
+                            <Link
+                              href={`/blog/${post.id}`}
+                              className="hover:text-primary transition-colors"
+                            >
+                              {post.title}
+                            </Link>
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex w-full justify-between items-center">
+                            <div className="flex items-center gap-3">
+                              <Avatar className="h-8 w-8">
+                                <AvatarImage
+                                  src={post.authorAvatar}
+                                  alt={post.author}
+                                />
+                                <AvatarFallback>
+                                  {post.author
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .join("")}
+                                </AvatarFallback>
+                              </Avatar>
+                              <div className="flex-1">
+                                <p className="text-sm font-medium">{post.author}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="h-3 w-3" />
+                                {new Date(post.date).toLocaleDateString()}
+                              </span>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </motion.div>
+      
+                {/* Load More Button */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-center mt-12"
+                >
+                  <Button variant="outline" size="lg">
+                    Load More Articles
+                  </Button>
+                </motion.div>
+              </div>
+            </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">

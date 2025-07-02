@@ -32,11 +32,14 @@ import {
   Settings,
   Quote,
   User,
+  Calendar,
 } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useRef, useState } from "react";
 import { Timeline } from "@/components/ui/timeline";
+import { blogPosts } from "@/data/mockdata";
+import DeviceCarousel from "@/components/ui/device-carousel";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -364,7 +367,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
         <div className="max-w-7xl mx-auto pattern-bg">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -442,7 +445,7 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted">
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -632,18 +635,93 @@ export default function Home() {
               </div>
             </motion.div>
           </motion.div>
+
+          <div className="mx-auto my-[8%] text-center bg-[#F6F7F8] dark:bg-[#151515BF] p-[5%] rounded-2xl border dark:border-zinc-800 border-zinc-300">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="max-w-4xl mx-auto"
+            >
+              <h1 className="text-center text-2xl font-bold md:text-3xl text-slate-900 dark:text-white tracking-tight mb-6">
+                Why Local Execution Matters
+              </h1>
+              <p className="text-muted-foreground mb-8">
+                In an age where your data is everywhere, TechNests.ai keeps your
+                trading strategies, performance data, and market insights
+                completely private.
+              </p>
+              <div className="justify-center items-center grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-full">
+                <div className="flex flex-col items-center text-sm justify-center gap-1 text-center">
+                  <Shield className="text-[#17C964] w-10 h-10" />
+
+                  <p className="text-zinc-900  font-semibold dark:text-zinc-100">
+                    Complete Privacy
+                  </p>
+                  <p className="text-[#374758] dark:text-zinc-200">
+                    Your strategies and data never leave your computer
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-sm justify-center gap-1 text-center">
+                  <Download className="text-[#08B0FF] w-10 h-10" />
+                  <p className="text-zinc-900  font-semibold dark:text-zinc-100">
+                    No Internet Required
+                  </p>
+                  <p className=" text-[#374758] dark:text-zinc-100">
+                    Trade even when your connection is unreliable
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-sm justify-center gap-1 text-center">
+                  <Settings className="text-[#CD12DF] w-10 h-10" />
+                  <p className="text-zinc-900  font-semibold dark:text-zinc-100">
+                    Full Control
+                  </p>
+                  <p className=" text-[#374758] dark:text-zinc-100">
+                    Customize everything to match your trading style
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* How Technest Works Section */}
-      <section className="relative w-full bg-muted/50 overflow-clip ">
+      <section className="relative w-full bg-muted/50 overflow-clip px-3 lg:px-[7%]">
         <div className="max-w-6xl mx-auto">
           <Timeline data={data} />
         </div>
       </section>
 
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
+            <p className="text-[#08B0FF] text-center my-1 uppercase">
+              The TechNests Ecosystem
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Trade Smarter, Grow Faster
+            </h2>
+            <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              A complete AI trading system that runs locally on your computer.
+              No internet required. No data shared. Just pure trading
+              intelligence.
+            </p>
+          </motion.div>
+
+          <DeviceCarousel />
+        </div>
+      </section>
+
       {/* Testimonials Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%] bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -719,8 +797,87 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blog Posts Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl text-center font-bold mb-5">
+              Latest Blog Posts
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {blogPosts.slice(0, 3).map((post, index) => (
+              <motion.div key={post.id} variants={fadeInUp}>
+                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                  <div className="aspect-video bg-muted">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover rounded-t-lg"
+                    />
+                  </div>
+                  <CardHeader>
+                    <Badge variant="outline" className="w-fit">
+                      {post.category}
+                    </Badge>
+                    <CardTitle className="text-lg">
+                      <Link
+                        href={`/blog/${post.id}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {post.title}
+                      </Link>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex w-full justify-between items-center">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage
+                            src={post.authorAvatar}
+                            alt={post.author}
+                          />
+                          <AvatarFallback>
+                            {post.author
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1">
+                          <p className="text-sm font-medium">{post.author}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {new Date(post.date).toLocaleDateString()}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
         <div className="max-w-6xl mx-auto text-center bg-[#F6F7F8] dark:bg-[#151515BF] py-[7%] px-[5%] rounded-2xl border dark:border-zinc-800 border-zinc-300">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
