@@ -1,36 +1,36 @@
 "use client";
 
-import Link from 'next/link';
-import { TrendingUp, Mail, Phone, MapPin } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   const footerSections = [
     {
-      title: 'Product',
+      title: "Product",
       links: [
-        { href: '/pricing', label: 'Pricing' },
-        { href: '/about', label: 'About Us' },
-        { href: '/blog', label: 'Blog' },
-        { href: '/subscription', label: 'Get Started' },
+        { href: "/pricing", label: "Pricing" },
+        { href: "/about", label: "About Us" },
+        { href: "/blog", label: "Blog" },
+        { href: "/subscription", label: "Get Started" },
       ],
     },
     {
-      title: 'Support',
+      title: "Support",
       links: [
-        { href: '/contact', label: 'Contact' },
-        { href: '/help', label: 'Help Center' },
-        { href: '/terms', label: 'Terms of Service' },
-        { href: '/privacy', label: 'Privacy Policy' },
+        { href: "/contact", label: "Contact" },
+        { href: "/help", label: "Help Center" },
+        { href: "/terms", label: "Terms of Service" },
+        { href: "/privacy", label: "Privacy Policy" },
       ],
     },
     {
-      title: 'Company',
+      title: "Company",
       links: [
-        { href: '/careers', label: 'Careers' },
-        { href: '/press', label: 'Press' },
-        { href: '/investors', label: 'Investors' },
-        { href: '/security', label: 'Security' },
+        { href: "/careers", label: "Careers" },
+        { href: "/press", label: "Press" },
+        { href: "/investors", label: "Investors" },
+        { href: "/security", label: "Security" },
       ],
     },
   ];
@@ -42,16 +42,19 @@ export function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <TrendingUp className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">TradePro</span>
+              <img src="/assets/logo.svg" className="h-8 w-8 text-primary" />
+              <span className="text-xl font-bold gradient-text !bg-clip-text text-transparent py-1">
+                technests
+              </span>
             </Link>
             <p className="text-muted-foreground text-sm">
-              Professional trading signals and precision automation for serious traders.
+              Professional trading signals and precision automation for serious
+              traders.
             </p>
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span>contact@tradepro.com</span>
+                <span>support@technests.ai</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
@@ -90,13 +93,22 @@ export function Footer() {
               © 2025 TradePro. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link
+                href="/terms"
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
                 Terms
               </Link>
-              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link
+                href="/privacy"
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
                 Privacy
               </Link>
-              <Link href="/cookies" className="text-sm text-muted-foreground hover:text-foreground">
+              <Link
+                href="/cookies"
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
                 Cookies
               </Link>
             </div>

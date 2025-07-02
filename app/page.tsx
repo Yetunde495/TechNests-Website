@@ -335,7 +335,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="py-[9%] flex flex-col w-full justify-center items-center text-center"
           >
-            <h1 className="text-center lg:text-5xl sm:text-4xl font-bold text-4xl mb-3 text-slate-900 dark:text-white tracking-tight ">
+            <h1 className="text-center lg:text-5xl sm:text-4xl font-bold text-3xl mb-3 text-slate-900 dark:text-white tracking-tight ">
               Trusted By Successful Prop Traders
             </h1>
             <p className="text-base text-[#374758] dark:text-zinc-100 mb-6 max-w-3xl mx-auto">
@@ -425,10 +425,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="flex flex-col w-full justify-center items-center py-12 my-10 gap-4 bg-[#F6F7F8] dark:bg-[#151515BF] p-5 rounded-lg"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
+            <h2 className="text-3xl md:text-4xl text-center font-bold">
               Ready to Elevate your Trading Success?
             </h2>
-            <p className="text-xl text-center text-muted-foreground max-w-3xl mx-auto">
+            <p className="md:text-xl text-lg text-center text-muted-foreground max-w-3xl mx-auto">
               Join other traders around the world who have passed their prop
               firm evaluations with TechNests
             </p>
@@ -734,7 +734,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Success Stories from Real Traders
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="md:text-xl text-lg text-muted-foreground max-w-3xl mx-auto">
               Don't just take our word for it. Here's what traders are saying
               about their journey with TechNests.ai and their prop firm success.
             </p>
@@ -817,7 +817,7 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="sm:grid grid-cols-1 md:grid-cols-2 hidden lg:grid-cols-3 gap-8"
           >
             {blogPosts.slice(0, 3).map((post, index) => (
               <motion.div key={post.id} variants={fadeInUp}>
@@ -873,6 +873,64 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+
+          <div className="flex gap-4 overflow-x-auto pb-4 sm:hidden">
+            {blogPosts.slice(0, 4).map((post, index) => (
+              <div className="flex-shrink-0 w-64" key={index}>
+                <motion.div key={post.id} variants={fadeInUp}>
+                  <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                    <div className="aspect-video bg-muted">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover rounded-t-lg"
+                      />
+                    </div>
+                    <CardHeader>
+                      <Badge variant="outline" className="w-fit">
+                        {post.category}
+                      </Badge>
+                      <CardTitle className="text-lg">
+                        <Link
+                          href={`/blog/${post.id}`}
+                          className="hover:text-primary transition-colors"
+                        >
+                          {post.title}
+                        </Link>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex w-full justify-between items-center">
+                        <div className="flex items-center gap-3">
+                          <Avatar className="h-8 w-8">
+                            <AvatarImage
+                              src={post.authorAvatar}
+                              alt={post.author}
+                            />
+                            <AvatarFallback>
+                              {post.author
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium">{post.author}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            {new Date(post.date).toLocaleDateString()}
+                          </span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

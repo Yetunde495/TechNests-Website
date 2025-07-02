@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const htmlUrls = [
-  "/html/DrMarkets_EoD_Analysis.html",
-  "/html/DrMarkets_Morning_Report.html",
-  "/html/TradeRx_Executisdsfon_Report.html",
+  "/html/markets-eod-analysis.html",
+  "/html/markets-morning-report.html",
+  "/html/traderx-execution-report.html",
 ];
 const slides = [
-  { url: "/html/DrMarkets_EoD_Analysis.html", label: "Marketing Site" },
-  { url: "/html/DrMarkets_Morning_Report.html", label: "Dashboard UI" },
-  { url: "/html/TradeRx_Executisdsfon_Report.html", label: "Portfolio Page" },
+  { url: "/html/markets-eod-analysis.html", label: "Marketing Site" },
+  { url: "/html/markets-morning-report.html", label: "Dashboard UI" },
+  { url: "/html/traderx-execution-report.html", label: "Portfolio Page" },
 ];
 
 export default function DeviceCarousel() {
