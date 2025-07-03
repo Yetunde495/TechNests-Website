@@ -184,17 +184,16 @@ export function ChatPopup() {
         animate={{ scale: 1 }}
         transition={{ delay: 2, type: "spring", stiffness: 200 }}
       >
-        <Button
+        <button
           onClick={toggleChat}
-          size="lg"
-          className="rounded-full text-white w-14 h-14 shadow-lg hover:shadow-xl transition-shadow"
+          className="rounded-full button-gradient text-white w-14 h-14 shadow-lg gradient-button flex justify-center items-center hover:shadow-xl transition-shadow"
         >
           {chatState.isOpen ? (
             <X className="h-6 w-6" />
           ) : (
-            <MessageCircle className="h-6 w-6" />
+            <MessageCircle className="h-6 w-6 text-white" />
           )}
-        </Button>
+        </button>
         
         {/* Notification badge */}
         {!chatState.isOpen && !chatState.isEmailCaptured && (
@@ -204,7 +203,7 @@ export function ChatPopup() {
             animate={{ scale: 1 }}
             transition={{ delay: 3 }}
           >
-            <Badge className="bg-red-500 text-white rounded-full w-6 h-6 p-0 flex items-center justify-center text-xs">
+            <Badge className="bg-red-500 dark:bg-red-500 text-white rounded-full w-6 h-6 p-0 flex items-center justify-center text-xs">
               1
             </Badge>
           </motion.div>

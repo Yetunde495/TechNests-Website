@@ -1,3 +1,5 @@
+import { BarChart3, ShieldCheck, TrendingUp } from "lucide-react";
+
 export const blogPosts = [
   {
     id: "ai-powered-trading-signals",
@@ -103,3 +105,84 @@ export const faqData = [
     answer: "No. TechNests runs locally on your device, ensuring low latency, privacy, and direct control over your trades."
   },
 ];
+
+export const subscriptionPlans = {
+  headline: "TechNests Subscription Plans",
+  subheadline: "Tailored for serious traders — built to scale, protect, and win.",
+  note: "All yearly plans include 1 month FREE.",
+  plans: [
+  {
+    id: 'starter',
+    name: 'Starter',
+    color: 'border-blue-500',
+    monthly: 165,
+    yearly: 1815,
+    yearlySavings: 165,
+    tagline: 'Perfect for focused traders managing a small portfolio.',
+    icon: BarChart3,
+    features: [
+      'Supports up to 10 accounts',
+      'Adapts to Evaluation & Funded rules',
+      'Spots high-probability trade zones',
+      'Applies dynamic self-aware risk logic',
+      'Learns from every trade to guide better decisions',
+      'Includes daily execution & market reports'
+    ],
+    cta: {
+      text: 'Start Smart',
+      subtext: 'Begin your funded journey with structured discipline.'
+    }
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    color: 'border-yellow-500',
+    monthly: 265,
+    yearly: 2915,
+    yearlySavings: 265,
+    tagline: 'Ideal for traders ready to scale with structure and safety.',
+    icon: TrendingUp,
+    features: [
+      'Supports up to 20 accounts',
+      'Runs separate rule engines for each account type',
+      'Enhances signal quality based on real-time data',
+      'Prevents overtrading with time-based filters',
+      'Prioritizes funded account preservation',
+      'Designed for scaling evaluations and consistent payouts'
+    ],
+    cta: {
+      text: 'Scale Confidently',
+      subtext: 'Upgrade your edge, elevate your results.'
+    },
+    popular: true
+  },
+  {
+    id: 'elite',
+    name: 'Elite',
+    color: 'border-red-500',
+    monthly: 365,
+    yearly: 4015,
+    yearlySavings: 365,
+    tagline: 'Best for prop firms, power users, or serious traders running large systems.',
+    icon: ShieldCheck,
+    features: [
+      'Supports unlimited accounts',
+      'Handles complex strategy rotations with full automation',
+      'Detects only top-tier trade setups',
+      'Auto-adjusts risk based on results across accounts',
+      'Provides deep performance analytics',
+      'Designed to protect, grow, and dominate your portfolio'
+    ],
+    cta: {
+      text: 'Go Unlimited',
+      subtext: 'Command your prop empire with full control.'
+    }
+  }
+],
+
+  extras: {
+    guarantee: "All plans include full access, no hidden fees, and zero lock-in.",
+    security: "Your strategy. Our system. Real edge."
+  }
+};
+
