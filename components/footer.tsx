@@ -24,15 +24,6 @@ export function Footer() {
         { href: "/privacy", label: "Privacy Policy" },
       ],
     },
-    {
-      title: "Company",
-      links: [
-        { href: "/careers", label: "Careers" },
-        { href: "/press", label: "Press" },
-        { href: "/investors", label: "Investors" },
-        { href: "/security", label: "Security" },
-      ],
-    },
   ];
 
   return (
@@ -40,7 +31,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 col-span-2">
             <Link href="/" className="flex items-center space-x-2">
               <img src="/assets/logo.svg" className="h-8 w-8 text-primary" />
               <span className="text-xl font-bold gradient-text !bg-clip-text text-transparent py-1">
