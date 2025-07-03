@@ -98,3 +98,6 @@
   background: url("/assets/pattern-LgbXdP9a.svg.png") no-repeat top center fixed;
   background-size: 100% 50%;
 }
+.grid-bg {
+   background: url("/assets/grid-frame.svg") no-repeat top center fixed; 
+}

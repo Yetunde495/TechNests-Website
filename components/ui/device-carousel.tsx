@@ -27,11 +27,12 @@ export default function DeviceCarousel() {
   }, []);
 
   return (
-     <div className="relative w-full flex flex-col max-w-5xl items-center justify-center px-4 bg-white overflow-hidden">
-
+    <div className="relative w-full flex flex-col max-w-5xl items-center justify-center px-4 overflow-hidden">
       {/* Slide Label */}
-      <div className="text-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-700">{slides[current].label}</h2>
+      <div className="text-center mb-6 hidden">
+        <h2 className="text-xl font-semibold text-gray-700">
+          {slides[current].label}
+        </h2>
       </div>
 
       {/* LAPTOP FRAME */}
@@ -59,8 +60,13 @@ export default function DeviceCarousel() {
 
       {/* Laptop Base */}
       <div className="hidden md:block relative w-full mt-1.5">
-      <img src="/assets/laptop-deck.svg" className=" w-full" /> 
-       <div><img src="/assets/shape-4.svg" className="absolute left-[43%] top-0" /></div>
+        <img src="/assets/laptop-deck.svg" className=" w-full" />
+        <div>
+          <img
+            src="/assets/shape-4.svg"
+            className="absolute left-[43%] top-0"
+          />
+        </div>
       </div>
 
       {/* MOBILE FRAME */}

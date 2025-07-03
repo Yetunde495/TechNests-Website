@@ -42,7 +42,13 @@ import { OverlayCopy, StickyDiv } from "@/components/ui/testScroll";
 import { Timeline } from "@/components/ui/timeline";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Avatar } from "@/components/ui/avatar";
-import { blogPosts } from "@/data/mockdata";
+import { blogPosts, faqData } from "@/data/mockdata";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -612,7 +618,9 @@ export default function About() {
               Build for focused, rule-driven traders
             </h2>
             <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto">
-             Whether you're just starting out or a seasoned pro, TechNests is designed to help you automate your trading strategies and achieve consistent results. Our platform is perfect for:
+              Whether you're just starting out or a seasoned pro, TechNests is
+              designed to help you automate your trading strategies and achieve
+              consistent results. Our platform is perfect for:
             </p>
           </motion.div>
 
@@ -719,95 +727,136 @@ export default function About() {
         </div>
       </section>
 
-       {/* Blog Posts Grid */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8">
-              <div className="max-w-7xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="mb-12"
-                >
-                  <h2 className="text-3xl md:text-5xl font-bold mb-5">Latest Blog Posts</h2>
-                </motion.div>
-      
-                <motion.div
-                  variants={staggerContainer}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                  {blogPosts.map((post, index) => (
-                    <motion.div key={post.id} variants={fadeInUp}>
-                      <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                        <div className="aspect-video bg-muted">
-                          <img
-                            src={post.image}
-                            alt={post.title}
-                            className="w-full h-full object-cover rounded-t-lg"
+      {/* Blog Posts Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl text-center font-bold mb-5">
+              Latest Blog Posts
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {blogPosts.slice(0, 3).map((post, index) => (
+              <motion.div key={post.id} variants={fadeInUp}>
+                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                  <div className="aspect-video bg-muted">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover rounded-t-lg"
+                    />
+                  </div>
+                  <CardHeader>
+                    <Badge variant="outline" className="w-fit">
+                      {post.category}
+                    </Badge>
+                    <CardTitle className="text-lg">
+                      <Link
+                        href={`/blog/${post.id}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {post.title}
+                      </Link>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex w-full justify-between items-center">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage
+                            src={post.authorAvatar}
+                            alt={post.author}
                           />
+                          <AvatarFallback>
+                            {post.author
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1">
+                          <p className="text-sm font-medium">{post.author}</p>
                         </div>
-                        <CardHeader>
-                          <Badge variant="outline" className="w-fit mb-2">
-                            {post.category}
-                          </Badge>
-                          <CardTitle className="text-lg">
-                            <Link
-                              href={`/blog/${post.id}`}
-                              className="hover:text-primary transition-colors"
-                            >
-                              {post.title}
-                            </Link>
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="flex w-full justify-between items-center">
-                            <div className="flex items-center gap-3">
-                              <Avatar className="h-8 w-8">
-                                <AvatarImage
-                                  src={post.authorAvatar}
-                                  alt={post.author}
-                                />
-                                <AvatarFallback>
-                                  {post.author
-                                    .split(" ")
-                                    .map((n) => n[0])
-                                    .join("")}
-                                </AvatarFallback>
-                              </Avatar>
-                              <div className="flex-1">
-                                <p className="text-sm font-medium">{post.author}</p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span className="flex items-center gap-1">
-                                <Calendar className="h-3 w-3" />
-                                {new Date(post.date).toLocaleDateString()}
-                              </span>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </motion.div>
-      
-                {/* Load More Button */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="text-center mt-12"
-                >
-                  <Button variant="outline" size="lg">
-                    Load More Articles
-                  </Button>
-                </motion.div>
-              </div>
-            </section>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {new Date(post.date).toLocaleDateString()}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Load More Button */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-center mt-6"
+          >
+            <Button variant="outline" size="lg">
+              Load More Articles
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="md:text-xl text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our FAQ area is the best place to look to find answers to your
+              questions. Our community and support team constantly updates the
+              questions and answers.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="flex w-full justify-center items-center max-w-5xl mx-auto"
+          >
+            <Accordion type="single" collapsible className="w-full space-y-2.5">
+              {faqData.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -822,7 +871,8 @@ export default function About() {
               Want to join Technests?
             </h2>
             <p className="text-xl text-muted-foreground mb-6">
-             We’re always looking to partner with funded traders, influencers, prop firms, and agencies.
+              We’re always looking to partner with funded traders, influencers,
+              prop firms, and agencies.
             </p>
             <Button size="lg" className="text-lg px-8 py-6" asChild>
               <Link href="/subscription">

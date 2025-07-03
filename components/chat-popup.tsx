@@ -187,7 +187,7 @@ export function ChatPopup() {
         <Button
           onClick={toggleChat}
           size="lg"
-          className="rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-shadow"
+          className="rounded-full text-white w-14 h-14 shadow-lg hover:shadow-xl transition-shadow"
         >
           {chatState.isOpen ? (
             <X className="h-6 w-6" />

@@ -26,7 +26,7 @@ body {
   letter-spacing: 0.3px;
 }
 .logo {
-  width: 100px;
+  width: 50px;
   display: block;
   margin: 0 auto 1rem;
 }
@@ -72,10 +72,22 @@ ul {
   color: #a0a4ab;
   padding: 2rem 1rem 1rem;
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding: 1rem;
+  }
+ .header h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+} 
+}
 </style>
 </head>
 <body>
-<div class="header"><img alt="TechNests Logo" class="logo" src="TechNests Logo Design.png"/>
+<div class="header"><img alt="TechNests Logo" src="/assets/logo.svg" style="margin-bottom: 1rem;" width="40"/>
 <h1>📄 TradeRx Execution Report</h1>
 <p>🗓️ Date: 2025-06-22</p>
 </div>

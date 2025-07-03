@@ -66,3 +66,40 @@ export const blogPosts = [
     image: "https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
   }
 ];
+
+export const faqData = [
+  {
+    question: "What is TechNests?",
+    answer: "TechNests is a local AI-powered automation platform that helps prop firm traders pass evaluations, stay funded, and trade consistently by automating their trading rules."
+  },
+    {
+    question: 'How does it work?',
+    answer:
+      'Choose your prop firm, subscribe, and let your personalized trading assistant handle trading and analytics in real-time.',
+  },
+  {
+    question: 'Can beginners use Technests?',
+    answer:
+      'Yes! Technests is built for both beginners and pros, with no technical setup required.',
+  },
+  {
+    question: "Does TechNests give me trading capital?",
+    answer: "No. TechNests doesn’t provide capital — it helps you earn and keep it by improving your execution, discipline, and rule adherence."
+  },
+  {
+    question: "Is this copy trading or signals?",
+    answer: "No. TechNests is not a signal provider or copy trading system. Your bot runs your strategy, locally and independently."
+  },
+  {
+    question: "What platforms does it support?",
+    answer: "TechNests currently integrates with NinjaTrader for futures trading and is compatible with firms like Apex, Topstep, and Earn2Trade."
+  },
+  {
+    question: "Can I run multiple accounts?",
+    answer: "Yes. TechNests supports multi-account automation so you can trade several evaluations or funded accounts simultaneously."
+  },
+  {
+    question: "Is it cloud-based?",
+    answer: "No. TechNests runs locally on your device, ensuring low latency, privacy, and direct control over your trades."
+  },
+];
