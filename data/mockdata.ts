@@ -71,8 +71,8 @@ export const blogPosts = [
 
 export const faqData = [
   {
-    question: "What is TechNests?",
-    answer: "TechNests is a local AI-powered automation platform that helps prop firm traders pass evaluations, stay funded, and trade consistently by automating their trading rules."
+    question: "What is Technests?",
+    answer: "Technests is a local AI-powered automation platform that helps prop firm traders pass evaluations, stay funded, and trade consistently by automating their trading rules."
   },
     {
     question: 'How does it work?',
@@ -85,29 +85,29 @@ export const faqData = [
       'Yes! Technests is built for both beginners and pros, with no technical setup required.',
   },
   {
-    question: "Does TechNests give me trading capital?",
-    answer: "No. TechNests doesn’t provide capital — it helps you earn and keep it by improving your execution, discipline, and rule adherence."
+    question: "Does Technests give me trading capital?",
+    answer: "No. Technests doesn’t provide capital — it helps you earn and keep it by improving your execution, discipline, and rule adherence."
   },
   {
     question: "Is this copy trading or signals?",
-    answer: "No. TechNests is not a signal provider or copy trading system. Your bot runs your strategy, locally and independently."
+    answer: "No. Technests is not a signal provider or copy trading system. Your bot runs your strategy, locally and independently."
   },
   {
     question: "What platforms does it support?",
-    answer: "TechNests currently integrates with NinjaTrader for futures trading and is compatible with firms like Apex, Topstep, and Earn2Trade."
+    answer: "Technests currently integrates with NinjaTrader for futures trading and is compatible with firms like Apex, Topstep, and Earn2Trade."
   },
   {
     question: "Can I run multiple accounts?",
-    answer: "Yes. TechNests supports multi-account automation so you can trade several evaluations or funded accounts simultaneously."
+    answer: "Yes. Technests supports multi-account automation so you can trade several evaluations or funded accounts simultaneously."
   },
   {
     question: "Is it cloud-based?",
-    answer: "No. TechNests runs locally on your device, ensuring low latency, privacy, and direct control over your trades."
+    answer: "No. Technests runs locally on your device, ensuring low latency, privacy, and direct control over your trades."
   },
 ];
 
 export const subscriptionPlans = {
-  headline: "TechNests Subscription Plans",
+  headline: "Technests Subscription Plans",
   subheadline: "Tailored for serious traders — built to scale, protect, and win.",
   note: "All yearly plans include 1 month FREE.",
   plans: [

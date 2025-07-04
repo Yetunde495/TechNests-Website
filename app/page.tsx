@@ -120,7 +120,7 @@ const stats = [
     label: "Active Traders",
     value: "250+",
     icon: Users,
-    sublabel: "Using TechNests daily",
+    sublabel: "Using Technests daily",
   },
   {
     label: "Profits Generated",
@@ -204,7 +204,7 @@ const data = [
     content: (
       <div>
         <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
-          Connect the TechNests automation engine to NinjaTrader on your local
+          Connect the Technests automation engine to NinjaTrader on your local
           machine. No cloud, no delays — just direct execution.{" "}
         </p>
       </div>
@@ -281,7 +281,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base text-[#374758] dark:text-zinc-100 mb-8 max-w-3xl mx-auto">
-              TechNests is the next-generation platform for serious traders and
+              Technests is the next-generation platform for serious traders and
               trading communities. Get premium prop trading signals and unleash
               automated content that builds authority and drives traffic — all
               from one powerful system.
@@ -289,7 +289,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
-                <Link href="/subscription">
+                <Link href="/pricing">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -396,7 +396,7 @@ export default function Home() {
               Everything You Need to Succeed
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              TechNests.ai combines cutting-edge AI technology with proven
+              Technests.ai combines cutting-edge AI technology with proven
               trading principles to give you the structure and discipline needed
               for prop firm success.
             </p>
@@ -443,11 +443,11 @@ export default function Home() {
             </h2>
             <p className="md:text-xl text-lg text-center text-muted-foreground max-w-3xl mx-auto">
               Join other traders around the world who have passed their prop
-              firm evaluations with TechNests
+              firm evaluations with Technests
             </p>
             <div>
               <Button size="lg" className="text-lg px-8 py-6 mt-6" asChild>
-                <Link href="/subscription">
+                <Link href="/pricing">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -468,14 +468,14 @@ export default function Home() {
             className="text-center mb-24"
           >
             <p className="text-[#08B0FF] text-center my-1 uppercase">
-              The TechNests Ecosystem
+              The Technests Ecosystem
             </p>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Trade Smarter, Grow Faster
             </h2>
             <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto">
               A complete AI trading system that runs locally on your computer.
-              No internet required. No data shared. Just pure trading
+              No API required. No data shared. Just pure trading
               intelligence.
             </p>
           </motion.div>
@@ -661,7 +661,7 @@ export default function Home() {
                 Why Local Execution Matters
               </h1>
               <p className="text-muted-foreground mb-8">
-                In an age where your data is everywhere, TechNests.ai keeps your
+                In an age where your data is everywhere, Technests.ai keeps your
                 trading strategies, performance data, and market insights
                 completely private.
               </p>
@@ -679,7 +679,7 @@ export default function Home() {
                 <div className="flex flex-col items-center text-sm justify-center gap-1 text-center">
                   <Download className="text-[#08B0FF] w-10 h-10" />
                   <p className="text-zinc-900  font-semibold dark:text-zinc-100">
-                    No Internet Required
+                    No API Required
                   </p>
                   <p className=" text-[#374758] dark:text-zinc-100">
                     Trade even when your connection is unreliable
@@ -736,12 +736,12 @@ export default function Home() {
           >
             <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto mb-5">
               A complete AI trading system that runs locally on your computer.
-              No internet required. No data shared. Just pure trading
+              No API or Cloud required. No data shared. Just pure trading
               intelligence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
-                <Link href="/subscription">
+                <Link href="/pricing">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -778,7 +778,7 @@ export default function Home() {
             </h2>
             <p className="md:text-xl text-lg text-muted-foreground max-w-3xl mx-auto">
               Don't just take our word for it. Here's what traders are saying
-              about their journey with TechNests.ai and their prop firm success.
+              about their journey with Technests.ai and their prop firm success.
             </p>
           </motion.div>
 
@@ -988,7 +988,7 @@ export default function Home() {
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Join thousands of successful traders who've transformed their
-              trading with TechNests.ai. Get the discipline, structure, and
+              trading with Technests.ai. Get the discipline, structure, and
               AI-powered insights you need to succeed.
             </p>
             <div className="flex justify-center items-center grid-cols-1 gap-5 w-full">
@@ -1016,7 +1016,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center py-8">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
-                <Link href="/subscription">
+                <Link href="/pricing">
                   Start Your Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

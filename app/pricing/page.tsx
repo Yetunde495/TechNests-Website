@@ -190,7 +190,7 @@ export default function Pricing() {
                         size="lg"
                         asChild
                       >
-                        <Link href="/subscription">
+                        <Link href="/pricing">
                           {plan.cta.text}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
@@ -270,7 +270,7 @@ export default function Pricing() {
               Join thousands of successful traders. Start your free trial today.
             </p>
             <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <Link href="/subscription">
+              <Link href="/pricing">
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

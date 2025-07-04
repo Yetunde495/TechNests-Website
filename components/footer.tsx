@@ -12,7 +12,7 @@ export function Footer() {
         { href: "/pricing", label: "Pricing" },
         { href: "/about", label: "About Us" },
         { href: "/blog", label: "Blog" },
-        { href: "/subscription", label: "Get Started" },
+        { href: "/pricing", label: "Get Started" },
       ],
     },
     {
@@ -59,7 +59,7 @@ export function Footer() {
           </div>
 
           {/* Footer Links */}
-          {footerSections.map((section, index) => (
+          {footerSections.map((section) => (
             <div key={section.title} className="space-y-4">
               <h3 className="font-semibold">{section.title}</h3>
               <ul className="space-y-2">
@@ -81,7 +81,7 @@ export function Footer() {
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © 2025 TradePro. All rights reserved.
+              © 2025 Technests. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link

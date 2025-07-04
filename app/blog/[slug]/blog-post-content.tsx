@@ -277,7 +277,7 @@ export function BlogPostContent({ blogPost, relatedPosts, params }: BlogPostCont
               Subscribe to our newsletter for weekly trading tips and market analysis.
             </p>
             <Button size="lg" asChild>
-              <Link href="/subscription">
+              <Link href="/pricing">
                 Subscribe Now
               </Link>
             </Button>

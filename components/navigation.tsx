@@ -85,7 +85,7 @@ export function Navigation() {
             </Button>
 
             <Button asChild>
-              <Link href="/subscription">Get Started</Link>
+              <Link href="/pricing">Get Started</Link>
             </Button>
           </div>
 
@@ -133,7 +133,7 @@ export function Navigation() {
                 ))}
                 <div className="px-3 py-2">
                   <Button asChild className="w-full">
-                    <Link href="/subscription" onClick={() => setIsOpen(false)}>
+                    <Link href="/pricing" onClick={() => setIsOpen(false)}>
                       Get Started
                     </Link>
                   </Button>

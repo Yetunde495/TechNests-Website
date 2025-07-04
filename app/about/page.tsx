@@ -132,7 +132,7 @@ const data = [
     content: (
       <div>
         <p className="mb-8 font-medium sm:text-lg text-base text-neutral-800 dark:text-neutral-200">
-          Connect the TechNests automation engine to NinjaTrader on your local
+          Connect the Technests automation engine to NinjaTrader on your local
           machine. No cloud, no delays — just direct execution.{" "}
         </p>
       </div>
@@ -235,7 +235,7 @@ export default function About() {
               </div>
             </motion.h1>
             <p className="md:text-xl text-base text-muted-foreground mb-8">
-              TechNests is the mission-driven, trader-first AI automation
+              Technests is the mission-driven, trader-first AI automation
               company empowering evaluation and funded traders to win —
               consistently, confidently, and without burnout.
             </p>
@@ -288,7 +288,7 @@ export default function About() {
                 consistency, and emotional control — every single day.
               </p>
               <p className="text-muted-foreground mb-4">
-                We’ve walked this path. That’s why we built TechNests: a
+                We’ve walked this path. That’s why we built Technests: a
                 full-stack automation system engineered for the{" "}
                 <em>real-world chaos</em> of prop trading.
               </p>
@@ -334,7 +334,7 @@ export default function About() {
             <div className="flex flex-col md:flex-row gap-6 max-w-4xl">
               <div className="flex-1 p-6 backdrop-blur-lg bg-white/30 dark:bg-black/30 text-zinc-200 rounded-lg shadow md:text-lg ">
                 <p>
-                  TechNests is not just another trading tool. We’re not a signal
+                  Technests is not just another trading tool. We’re not a signal
                   provider, marketplace, or brokerage. We’re your{" "}
                   <strong>personal trading assistant</strong> — built to enhance
                   your edge, discipline, and performance.
@@ -418,14 +418,14 @@ export default function About() {
             className="text-center mb-24"
           >
             <p className="text-[#08B0FF] text-center my-1 uppercase">
-              The TechNests Ecosystem
+              The Technests Ecosystem
             </p>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Trade Smarter, Grow Faster
             </h2>
             <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto">
               A complete AI trading system that runs locally on your computer.
-              No internet required. No data shared. Just pure trading
+              No API required. No data shared. Just pure trading
               intelligence.
             </p>
           </motion.div>
@@ -618,7 +618,7 @@ export default function About() {
               Build for focused, rule-driven traders
             </h2>
             <p className="md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Whether you're just starting out or a seasoned pro, TechNests is
+              Whether you're just starting out or a seasoned pro, Technests is
               designed to help you automate your trading strategies and achieve
               consistent results. Our platform is perfect for:
             </p>
@@ -666,7 +666,7 @@ export default function About() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Don't just take our word for it. Here's what traders are saying
-              about their journey with TechNests.ai and their prop firm success.
+              about their journey with Technests.ai and their prop firm success.
             </p>
           </motion.div>
 
@@ -875,7 +875,7 @@ export default function About() {
               prop firms, and agencies.
             </p>
             <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <Link href="/subscription">
+              <Link href="/pricing">
                 Start Your Journey
                 <ChevronRight className="ml-2 h-5 w-5" />
               </Link>

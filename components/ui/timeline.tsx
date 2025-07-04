@@ -52,7 +52,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               From Setup To Payout in Five Simple, Stress-free Steps.
             </h2>
             <p className="md:text-xl text-muted-foreground">
-              TechNests turns your trading rules into automated routines.
+              Technests turns your trading rules into automated routines.
               Whether you're running evaluations or funded accounts, our system
               simplifies the process — so you can trade smarter, stay compliant,
               and focus on growth.
