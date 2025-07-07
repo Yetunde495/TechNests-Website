@@ -1,11 +1,17 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { 
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import {
   Calendar,
   Clock,
   User,
@@ -13,136 +19,159 @@ import {
   TrendingUp,
   BarChart3,
   Shield,
-  Zap
-} from 'lucide-react';
-import Link from 'next/link';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+  Zap,
+  Tag,
+  ArrowRight,
+  Download,
+  CircleCheck,
+} from "lucide-react";
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import {
+  type BlogCategory,
+  type BlogPost,
+  fetchBlogCategories,
+  fetchBlogPosts,
+  fetchFeaturedPosts,
+  PaginatedResponse,
+} from "@/lib/blog-api";
+import {
+  BlogCategoriesSkeleton,
+  BlogGridSkeleton,
+} from "@/components/blog-skeleton";
+import { BlogPagination } from "@/components/blog-pagination";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { faqData } from "@/data/mockdata";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
-
-const featuredPost = {
-  id: "advanced-risk-management-strategies",
-  title: "Advanced Risk Management Strategies for Algorithmic Trading", 
-  excerpt: "Learn how to protect your capital and maximize profits with sophisticated risk management techniques used by professional traders.",
-  author: "Michael Chen",
-  authorAvatar: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-  date: "2024-01-15",
-  readTime: "8 min read",
-  category: "Risk Management",
-  image: "https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
-  featured: true
-};
-
-const blogPosts = [
-  {
-    id: "ai-powered-trading-signals",
-    title: "How AI is Transforming Trading Signal Generation",
-    excerpt: "Discover how machine learning algorithms are revolutionizing the way we identify and execute profitable trades.",
-    author: "Sarah Johnson",
-    authorAvatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-    date: "2024-01-12",
-    readTime: "6 min read",
-    category: "AI & Technology",
-    image: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
-  },
-  {
-    id: "crypto-trading-automation",
-    title: "Automating Cryptocurrency Trading: Best Practices",
-    excerpt: "Essential tips and strategies for successful automated cryptocurrency trading in volatile markets.",
-    author: "David Rodriguez",
-    authorAvatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-    date: "2024-01-10",
-    readTime: "7 min read",
-    category: "Cryptocurrency",
-    image: "https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
-  },
-  {
-    id: "market-volatility-strategies",
-    title: "Trading Strategies for High Volatility Markets",
-    excerpt: "How to adapt your trading approach during periods of extreme market volatility and uncertainty.",
-    author: "Emily Parker",
-    authorAvatar: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-    date: "2024-01-08",
-    readTime: "5 min read",
-    category: "Market Analysis",
-    image: "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
-  },
-  {
-    id: "backtesting-trading-strategies",
-    title: "The Complete Guide to Backtesting Trading Strategies",
-    excerpt: "Learn how to properly test your trading strategies using historical data to improve performance.",
-    author: "Michael Chen",
-    authorAvatar: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-    date: "2024-01-05",
-    readTime: "10 min read",
-    category: "Strategy Testing",
-    image: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
-  },
-  {
-    id: "psychology-of-trading",
-    title: "Mastering the Psychology of Automated Trading",
-    excerpt: "Understanding the mental aspects of trading and how automation can help overcome emotional biases.",
-    author: "Sarah Johnson",
-    authorAvatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-    date: "2024-01-03",
-    readTime: "8 min read",
-    category: "Trading Psychology",
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
-  },
-  {
-    id: "forex-market-hours",
-    title: "Understanding Global Forex Market Hours for Better Trading",
-    excerpt: "Optimize your trading schedule by understanding when different forex markets are most active.",
-    author: "David Rodriguez", 
-    authorAvatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-    date: "2024-01-01",
-    readTime: "6 min read",
-    category: "Forex",
-    image: "https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
-  }
-];
-
-const categories = [
-  { name: "All", icon: TrendingUp, count: 12 },
-  { name: "AI & Technology", icon: Zap, count: 3 },
-  { name: "Risk Management", icon: Shield, count: 2 },
-  { name: "Market Analysis", icon: BarChart3, count: 4 },
-  { name: "Strategy Testing", icon: TrendingUp, count: 2 },
-  { name: "Trading Psychology", icon: User, count: 1 }
-];
 
 export default function Blog() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const [blogData, setBlogData] = useState<PaginatedResponse<BlogPost> | null>(
+    null
+  );
+  const [featuredPost, setFeaturedPost] = useState<BlogPost[]>([]);
+  const [categories, setCategories] = useState<BlogCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [featuredLoading, setFeaturedLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || ""
+  );
+
+  // Get current filters from URL
+  const currentPage = parseInt(searchParams.get("page") || "1");
+  const currentCategory = searchParams.get("category") || "";
+  const currentSearch = searchParams.get("search") || "";
+
+  // Fetch data
+  useEffect(() => {
+    const loadData = async () => {
+      setLoading(true);
+      try {
+        // Fetch blog posts with current filters
+        const postsResponse = await fetchBlogPosts({
+          page: currentPage,
+          limit: 6,
+          search: currentSearch,
+          category: currentCategory,
+        });
+        setBlogData(postsResponse);
+
+        // Fetch featured post only on first page without filters
+        if (currentPage === 1 && !currentSearch && !currentCategory) {
+          const featured = await fetchFeaturedPosts(4);
+          setFeaturedPost(featured);
+        } else {
+          setFeaturedPost([]);
+        }
+
+        // Fetch categories
+        const categoriesData = await fetchBlogCategories();
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error("Error loading blog data:", error);
+      } finally {
+        setLoading(false);
+        setFeaturedLoading(false);
+        setCategoriesLoading(false);
+      }
+    };
+
+    loadData();
+  }, [currentPage, currentCategory, currentSearch]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (searchQuery.trim()) {
+      params.set("search", searchQuery.trim());
+    } else {
+      params.delete("search");
+    }
+
+    // Reset to first page when searching
+    params.delete("page");
+
+    const queryString = params.toString();
+    router.push(queryString ? `/blog?${queryString}` : "/blog");
+  };
+
+  const handleCategoryFilter = (categoryId: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (categoryId === "" || categoryId === currentCategory) {
+      params.delete("category");
+    } else {
+      params.set("category", categoryId);
+    }
+
+    // Reset to first page when filtering
+    params.delete("page");
+
+    const queryString = params.toString();
+    router.push(queryString ? `/blog?${queryString}` : "/blog");
+  };
   return (
-    <div className="min-h-screen pt-20 lg:px-[5%]">
+    <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="outline" className="mb-4 px-4 py-2">
-              <TrendingUp className="w-4 h-4 mr-2" />
-              Trading Insights
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Trading Blog
+            <h1 className="text-3xl md:text-5xl xl:text-6xl font-bold mb-3">
+              Welcome to{" "}
+              <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">
+                Technests Blog
+              </span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Stay updated with the latest trading strategies, market analysis, 
+            <p className="text-base text-[#374758] dark:text-zinc-100 mb-8 max-w-3xl mx-auto">
+              Stay updated with the latest trading strategies, market analysis,
               and insights from our team of experts.
             </p>
           </motion.div>
@@ -152,102 +181,210 @@ export default function Blog() {
       {/* Search and Categories */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex flex-col lg:flex-row flex-wrap gap-8">
             <div className="flex-1">
-              <div className="relative">
+              <form onSubmit={handleSearch} className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  placeholder="Search articles..." 
+                <Input
+                  placeholder="Search articles..."
                   className="pl-10"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
-              </div>
+              </form>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <Button 
-                  key={category.name} 
-                  variant="outline" 
+
+            {categoriesLoading ? (
+              <BlogCategoriesSkeleton />
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant={!currentCategory ? "default" : "outline"}
                   size="sm"
+                  onClick={() => handleCategoryFilter("")}
                   className="flex items-center gap-2"
                 >
-                  <category.icon className="h-4 w-4" />
-                  {category.name}
+                  All
                   <Badge variant="secondary" className="ml-1">
-                    {category.count}
+                    {blogData?.pagination.total || 0}
                   </Badge>
                 </Button>
-              ))}
-            </div>
+                {categories.map((category) => (
+                  <Button
+                    key={category._id}
+                    variant={
+                      currentCategory === category._id ? "default" : "outline"
+                    }
+                    size="sm"
+                    onClick={() => handleCategoryFilter(category._id)}
+                    className="flex items-center gap-2"
+                  >
+                    <Tag className="h-4 w-4" />
+                    {category.name}
+                    <Badge variant="secondary" className="ml-1">
+                      {category.postCount}
+                    </Badge>
+                  </Button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Featured Post */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="text-2xl font-bold mb-8">Featured Article</h2>
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="aspect-video lg:aspect-square bg-muted">
-                  <img 
-                    src={featuredPost.image} 
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-8">
-                  <Badge className="mb-4">{featuredPost.category}</Badge>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                    <Link 
-                      href={`/blog/${featuredPost.id}`}
-                      className="hover:text-primary transition-colors"
-                    >
-                      {featuredPost.title}
-                    </Link>
-                  </h3>
-                  <p className="text-muted-foreground mb-6 text-lg">
-                    {featuredPost.excerpt}
-                  </p>
-                  <div className="flex items-center gap-4 mb-6">
-                    <Avatar className="h-10 w-10">
-                      <AvatarImage src={featuredPost.authorAvatar} alt={featuredPost.author} />
-                      <AvatarFallback>{featuredPost.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <p className="font-medium">{featuredPost.author}</p>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {new Date(featuredPost.date).toLocaleDateString()}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          {featuredPost.readTime}
-                        </span>
+      {!featuredLoading && featuredPost?.length > 0 && (
+        <section className="py-20 px-4 sm:px-[5%] lg:px-[7%] bg-muted/30">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <h2 className="text-2xl font-bold">Featured Articles</h2>
+            </motion.div>
+
+            {featuredLoading ? (
+              <BlogGridSkeleton count={3} />
+            ) : (
+              <>
+                <motion.div
+                  variants={staggerContainer}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                >
+                  <motion.div variants={fadeInUp} className="">
+                    <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                      <div className="aspect-video bg-muted">
+                        <img
+                          src={featuredPost[0]?.featuredImage}
+                          alt={featuredPost[0].title}
+                          className={` w-full h-full object-cover rounded-t-lg`}
+                        />
                       </div>
+                      <CardHeader className="py-4 px-3 max-sm:px-2">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-1">
+                            <Avatar className="h-8 w-8">
+                              <AvatarFallback>
+                                {(
+                                  featuredPost[0].author?.firstName +
+                                  " " +
+                                  featuredPost[0]?.author?.lastName
+                                )
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="flex-1">
+                              <p className="text-sm font-medium">
+                                {featuredPost[0]?.author?.firstName}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              {new Date(
+                                featuredPost[0].publishedAt
+                              ).toLocaleDateString()}
+                            </span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {featuredPost[0]?.readingTime}
+                            </span>
+                          </div>
+                        </div>
+
+                        <CardTitle className="text-lg">
+                          <Link
+                            href={`/blog/${featuredPost[0]?.urlSlug}`}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {featuredPost[0].title}
+                          </Link>
+                        </CardTitle>
+                        <CardDescription>
+                          {featuredPost[0]?.summary}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-3 max-sm:px-2">
+                        <div className="flex items-center gap-3">
+                          <Badge variant="outline" className="w-fit mb-2">
+                            {featuredPost[0]?.category?.name}
+                          </Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                  {featuredPost.length > 1 && (
+                    <div className="flex flex-col gap-4">
+                      {featuredPost?.slice(1)?.map((post, index) => (
+                        <motion.div key={post._id} variants={fadeInUp}>
+                          <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-4 items-start  hover:shadow-lg transition-shadow duration-300">
+                            <div className=" bg-muted">
+                              <img
+                                src={post?.featuredImage}
+                                alt={post.title}
+                                className={` w-full h-full object-cover rounded-lg`}
+                              />
+                            </div>
+                            <div className="space-y-2 h-full">
+                              <div className="px-3 max-sm:px-2">
+                                <div className="text-base font-semibold mb-2">
+                                  <Link
+                                    href={`/blog/${post?.urlSlug}`}
+                                    className="hover:text-primary transition-colors"
+                                  >
+                                    {post.title}
+                                  </Link>
+                                </div>
+                                <p className="text-sm text-muted-foreground mb-2">
+                                  {post?.summary}
+                                </p>
+                              </div>
+                              <div className="px-3 max-sm:px-2 relative -bottom-3">
+                                <div className="flex items-center justify-between gap-3">
+                                  <Badge
+                                      variant="outline"
+                                      className="w-fit mb-2"
+                                    >
+                                      {post?.category?.name}
+                                    </Badge>
+
+                                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                    <span className="flex items-center gap-1">
+                                      <Calendar className="h-3 w-3" />
+                                      {new Date(
+                                        post.publishedAt
+                                      ).toLocaleDateString()}
+                                    </span>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
-                  </div>
-                  <Button asChild>
-                    <Link href={`/blog/${featuredPost.id}`}>
-                      Read Article
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
+                  )}
+                </motion.div>
+              </>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Blog Posts Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-[5%] lg:px-[7%] bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -259,65 +396,115 @@ export default function Blog() {
             <h2 className="text-2xl font-bold">Latest Articles</h2>
           </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {blogPosts.map((post, index) => (
-              <motion.div key={post.id} variants={fadeInUp}>
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                  <div className="aspect-video bg-muted">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover rounded-t-lg"
-                    />
-                  </div>
-                  <CardHeader>
-                    <Badge variant="outline" className="w-fit mb-2">
-                      {post.category}
-                    </Badge>
-                    <CardTitle className="text-lg">
-                      <Link 
-                        href={`/blog/${post.id}`}
-                        className="hover:text-primary transition-colors"
-                      >
-                        {post.title}
-                      </Link>
-                    </CardTitle>
-                    <CardDescription>
-                      {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-3">
-                      <Avatar className="h-8 w-8">
-                        <AvatarImage src={post.authorAvatar} alt={post.author} />
-                        <AvatarFallback>{post.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1">
-                        <p className="text-sm font-medium">{post.author}</p>
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {new Date(post.date).toLocaleDateString()}
-                          </span>
-                          <span>•</span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {post.readTime}
-                          </span>
-                        </div>
+          {loading ? (
+            <BlogGridSkeleton count={9} />
+          ) : blogData && blogData.data.length > 0 ? (
+            <>
+              <motion.div
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {blogData?.data?.map((post, index) => (
+                  <motion.div key={post._id} variants={fadeInUp}>
+                    <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                      <div className="aspect-video bg-muted">
+                        <img
+                          src={post?.featuredImage}
+                          alt={post.title}
+                          className="w-full h-full object-cover rounded-t-lg"
+                        />
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <CardHeader className="py-4 px-3 max-sm:px-2">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-1">
+                            <Avatar className="h-8 w-8">
+                              <AvatarFallback>
+                                {(
+                                  post.author?.firstName +
+                                  " " +
+                                  post?.author?.lastName
+                                )
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="flex-1">
+                              <p className="text-sm font-medium">
+                                {post?.author?.firstName}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              {new Date(post.publishedAt).toLocaleDateString()}
+                            </span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {post?.readingTime}
+                            </span>
+                          </div>
+                        </div>
+
+                        <CardTitle className="text-lg">
+                          <Link
+                            href={`/blog/${post?.urlSlug}`}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {post.title}
+                          </Link>
+                        </CardTitle>
+                        <CardDescription>{post?.summary}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="px-3 max-sm:px-2">
+                        <div className="flex items-center gap-3">
+                          <Badge variant="outline" className="w-fit mb-2">
+                            {post?.category?.name}
+                          </Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
+              {/* Pagination */}
+              <BlogPagination
+                currentPage={blogData.pagination.page}
+                totalPages={blogData.pagination.totalPages}
+                hasNext={blogData.pagination.hasNext}
+                hasPrev={blogData.pagination.hasPrev}
+              />
+            </>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center py-12"
+            >
+              <p className="text-muted-foreground text-lg">
+                {currentSearch || currentCategory
+                  ? "No articles found matching your criteria."
+                  : "No articles available at the moment."}
+              </p>
+              {(currentSearch || currentCategory) && (
+                <Button
+                  variant="outline"
+                  className="mt-4"
+                  onClick={() => router.push("/blog")}
+                >
+                  View All Articles
+                </Button>
+              )}
+            </motion.div>
+          )}
 
           {/* Load More Button */}
           <motion.div
@@ -334,29 +521,104 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* FAQ */}
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="md:text-xl text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our FAQ area is the best place to look to find answers to your
+              questions. Our community and support team constantly updates the
+              questions and answers.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="flex w-full justify-center items-center max-w-5xl mx-auto"
+          >
+            <Accordion type="single" collapsible className="w-full space-y-2.5">
+              {faqData.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-[7%]">
+        <div className="max-w-6xl mx-auto text-center bg-[#F6F7F8] dark:bg-[#151515BF] py-[7%] px-[5%] rounded-2xl border dark:border-zinc-800 border-zinc-300">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Stay Updated with Trading Insights
-            </h2>
+            <h1 className="text-center text-3xl font-bold md:text-4xl text-slate-900 dark:text-white tracking-tight mb-6">
+              Ready to Pass Your Next
+              <br />
+              <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">
+                Prop Firm Challenge?
+              </span>
+            </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Subscribe to our newsletter and get the latest trading strategies 
-              and market analysis delivered to your inbox.
+              Join thousands of successful traders who've transformed their
+              trading with Technests.ai. Get the discipline, structure, and
+              AI-powered insights you need to succeed.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                placeholder="Enter your email"
-                type="email"
-                className="flex-1"
-              />
-              <Button>Subscribe</Button>
+            <div className="flex justify-center items-center grid-cols-1 gap-5 w-full">
+              <div className="flex items-center text-sm justify-center gap-1 text-center">
+                <CircleCheck className="text-[#17C964]" />
+
+                <p className=" text-[#374758] dark:text-zinc-100">
+                  67% Success Rate
+                </p>
+              </div>
+              <div className="flex items-center text-sm justify-center gap-1 text-center">
+                <Shield className="text-[#00DCF1]" />
+
+                <p className=" text-[#374758] dark:text-zinc-100">
+                  100% Private & Local
+                </p>
+              </div>
+              <div className="flex items-center text-sm justify-center gap-1 text-center">
+                <Download className="text-[#CD12DF]" />
+
+                <p className=" text-[#374758] dark:text-zinc-100">
+                  Instant Download
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center py-8">
+              <Button size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/pricing">
+                  Start Your Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 py-6"
+                asChild
+              >
+                <Link href="/pricing">View Pricing</Link>
+              </Button>
             </div>
           </motion.div>
         </div>

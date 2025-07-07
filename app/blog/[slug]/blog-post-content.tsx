@@ -1,11 +1,19 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { 
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import MDEditor from "@uiw/react-md-editor";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
   Calendar,
   Clock,
   User,
@@ -14,46 +22,52 @@ import {
   BookmarkPlus,
   Twitter,
   Facebook,
-  Linkedin
-} from 'lucide-react';
-import Link from 'next/link';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+  Linkedin,
+  Dot,
+  Tag,
+} from "lucide-react";
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  BlogPostContentSkeleton,
+  RelatedPostsSkeleton,
+} from "@/components/blog-skeleton";
+import { BlogPost } from "@/lib/blog-api";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  author: string;
-  authorBio: string;
-  authorAvatar: string;
-  date: string;
-  readTime: string;
-  category: string;
-  image: string;
-  tags: string[];
-}
-
-interface RelatedPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  image: string;
-  readTime: string;
-}
-
 interface BlogPostContentProps {
-  blogPost: BlogPost;
-  relatedPosts: RelatedPost[];
+  blogPost: BlogPost | null;
+  relatedPosts: BlogPost[];
   params: { slug: string };
+  loading?: boolean;
 }
 
-export function BlogPostContent({ blogPost, relatedPosts, params }: BlogPostContentProps) {
+export function BlogPostContent({
+  blogPost,
+  relatedPosts,
+  params,
+  loading = false,
+}: BlogPostContentProps) {
+  const [relatedLoading, setRelatedLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate related posts loading delay
+    const timer = setTimeout(() => {
+      setRelatedLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading || !blogPost) {
+    return <BlogPostContentSkeleton />;
+  }
+
   return (
     <div className="min-h-screen pt-24">
       {/* Back Button */}
@@ -77,72 +91,82 @@ export function BlogPostContent({ blogPost, relatedPosts, params }: BlogPostCont
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <Badge className="mb-4">{blogPost.category}</Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">
+            <h1 className="lg:text-4xl md:text-3xl text-2xl font-display font-bold mb-4">
               {blogPost.title}
             </h1>
-            
-            <div className="flex items-center justify-center gap-6 mb-8 text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                {new Date(blogPost.date).toLocaleDateString()}
-              </span>
-              <span className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                {blogPost.readTime}
-              </span>
-            </div>
-
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <Avatar className="h-12 w-12">
-                <AvatarImage src={blogPost.authorAvatar} alt={blogPost.author} />
-                <AvatarFallback>{blogPost.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-              </Avatar>
-              <div className="text-left">
-                <p className="font-semibold">{blogPost.author}</p>
-                <p className="text-sm text-muted-foreground">Author</p>
-              </div>
-            </div>
-
-            {/* Social Share Buttons */}
-            <div className="flex items-center justify-center gap-2">
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
-              </Button>
-              <Button variant="outline" size="sm">
-                <BookmarkPlus className="h-4 w-4 mr-2" />
-                Save
-              </Button>
-              <Button variant="outline" size="sm">
-                <Twitter className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="sm">
-                <Facebook className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="sm">
-                <Linkedin className="h-4 w-4" />
-              </Button>
-            </div>
+            {blogPost.summary && (
+              <p className="text-base text-center text-muted-foreground mb-2">
+                {blogPost.summary}
+              </p>
+            )}
           </motion.div>
         </div>
       </section>
 
       {/* Featured Image */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 px-4 sm:px-6 lg:px-8 mb-12">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="aspect-video rounded-lg overflow-hidden mb-12"
+            className="aspect-video rounded-lg overflow-hidden"
           >
-            <img 
-              src={blogPost.image} 
+            <img
+              src={blogPost.featuredImage}
               alt={blogPost.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full max-h-96 object-cover"
             />
           </motion.div>
+          <div className="flex items-center w-full space-x-6 justify-between text-sm text-muted-foreground">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <Avatar className="h-12 w-12">
+                <AvatarFallback>
+                  {(
+                    blogPost?.author?.firstName +
+                    " " +
+                    blogPost?.author?.lastName
+                  )
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div className="text-left">
+                <p className="font-semibold">
+                  {blogPost?.author?.firstName +
+                    " " +
+                    blogPost?.author?.lastName}
+                </p>
+                <p className="text-sm text-muted-foreground">Admin</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-1">
+              <div className="flex items-center text-xs">
+                <Clock className="h-3 w-3 mr-1" />
+                {blogPost?.readingTime}
+              </div>
+              <Dot />
+              {blogPost.publishedAt && (
+                <div className="flex items-center text-xs">
+                  <Calendar className="h-3 w-3 mr-1" />
+                  Published{" "}
+                  {new Date(blogPost.publishedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+          {/* Social Share Buttons */}
+          <div className="flex items-center justify-center gap-2">
+            <Button variant="outline" size="sm">
+              <Share2 className="h-4 w-4 mr-2" />
+              Share
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -154,8 +178,21 @@ export function BlogPostContent({ blogPost, relatedPosts, params }: BlogPostCont
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="prose prose-lg dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: blogPost.content }}
-          />
+          >
+            <div className="w-full flex flex-col justify-center items-center">
+              <div data-color-mode="light" className="w-full">
+                <div className="wmde-markdown-var">
+                  <MDEditor.Markdown
+                    source={blogPost?.content || ""}
+                    style={{
+                      minHeight: "350px",
+                    }}
+                    className="editor-preview h-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Tags */}
           <motion.div
@@ -168,98 +205,80 @@ export function BlogPostContent({ blogPost, relatedPosts, params }: BlogPostCont
             <div className="flex flex-wrap gap-2">
               {blogPost.tags.map((tag) => (
                 <Badge key={tag} variant="outline">
+                  <Tag className="h-3 w-3 mr-1" />
                   {tag}
                 </Badge>
               ))}
             </div>
           </motion.div>
-
-          {/* Author Bio */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12"
-          >
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <Avatar className="h-16 w-16">
-                    <AvatarImage src={blogPost.authorAvatar} alt={blogPost.author} />
-                    <AvatarFallback>{blogPost.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg mb-2">About {blogPost.author}</h3>
-                    <p className="text-muted-foreground">{blogPost.authorBio}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 
       {/* Related Posts */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-6">Related Articles</h2>
-          </motion.div>
+      {(relatedPosts.length > 0 || relatedLoading) && (
+        <section className="py-20 px-4 sm:px-[7%] bg-muted/30">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl font-bold mb-6">Related Articles</h2>
+            </motion.div>
 
-          <motion.div
-            variants={{
-              animate: {
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {relatedPosts.map((post, index) => (
-              <motion.div key={post.id} variants={fadeInUp}>
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                  <div className="aspect-video bg-muted">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover rounded-t-lg"
-                    />
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-lg">
-                      <Link 
-                        href={`/blog/${post.id}`}
-                        className="hover:text-primary transition-colors"
-                      >
-                        {post.title}
-                      </Link>
-                    </CardTitle>
-                    <CardDescription>
-                      {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="h-3 w-3" />
-                      {post.readTime}
-                    </div>
-                  </CardContent>
-                </Card>
+            {relatedLoading ? (
+              <RelatedPostsSkeleton />
+            ) : (
+              <motion.div
+                variants={{
+                  animate: {
+                    transition: {
+                      staggerChildren: 0.1,
+                    },
+                  },
+                }}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              >
+                {relatedPosts.map((post, index) => (
+                  <motion.div key={post._id} variants={fadeInUp}>
+                    <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                      <div className="aspect-video bg-muted">
+                        <img
+                          src={post.featuredImage}
+                          alt={post.title}
+                          className="w-full h-full object-cover rounded-t-lg"
+                        />
+                      </div>
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          <Link
+                            href={`/blog/${post.urlSlug}`}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {post.title}
+                          </Link>
+                        </CardTitle>
+                        <CardDescription>{post?.summary}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Clock className="h-3 w-3" />
+                          {post?.readingTime}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Newsletter CTA */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -274,12 +293,11 @@ export function BlogPostContent({ blogPost, relatedPosts, params }: BlogPostCont
               Want More Trading Insights?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Subscribe to our newsletter for weekly trading tips and market analysis.
+              Subscribe to our newsletter for weekly trading tips and market
+              analysis.
             </p>
             <Button size="lg" asChild>
-              <Link href="/pricing">
-                Subscribe Now
-              </Link>
+              <Link href="/subscription">Subscribe Now</Link>
             </Button>
           </motion.div>
         </div>

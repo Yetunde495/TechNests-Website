@@ -83,6 +83,77 @@
     @apply bg-background text-foreground;
   }
 }
+ .w-md-editor, .w-md-editor-toolbar {
+  background-color: #ffffff !important;
+  color: inherit!important;
+  border: 1px solid #d9d9d9!important;
+  box-shadow: none!important;
+}
+.wmde-markdown {
+  background-color: transparent!important;
+  color: inherit!important;
+}
+
+.wmde-markdown ol {
+  list-style: decimal;
+  padding-left: 2rem;
+}
+
+.wmde-markdown hr {
+  color: transparent!important;
+  background-color: transparent!important;
+  border-bottom: none!important;
+}
+
+.wmde-markdown h1, h2, h3, h4, h5, h6,
+table, thead, tbody, tr, td, th,
+pre, code {
+  white-space: normal;
+  margin-top: 1.5em!important;
+  margin-bottom: 1.5em!important;
+}
+
+.wmde-markdown table, thead, tbody, tr {
+  width: 100%!important;
+}
+
+.wmde-markdown h1, h2, h3 {
+  border-bottom: none!important;
+}
+
+.wmde-markdown blockquote {
+  white-space: normal;
+  margin-top: 2.5em!important;
+  margin-bottom: 2.5em!important;
+}
+.wmde-markdown p, span {
+  white-space: pre-wrap;
+}
+
+.wmde-markdown ul {
+  list-style: disc;
+   margin-top: 1em!important;
+  margin-bottom: 2em!important;
+}
+
+.wmde-markdown img {
+  display: block!important;
+  margin: auto;
+  border-radius: 8px;
+  max-height: 24rem;
+  width: 100%;
+  object-fit: cover;
+  background-color: transparent!important;
+  margin-top: 4em!important;
+  margin-bottom: 4em!important;
+} 
+
+
+
+.w-md-editor-toolbar li > button {
+  color: inherit!important;
+}
+
 .primary-gradient {
   background: linear-gradient(91.13deg, #EE06DB 43.65%, #802ABC 56.99%, #08B0FF 73.07%, #00F0FF 89.13%);
 }
