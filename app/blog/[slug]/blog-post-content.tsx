@@ -50,7 +50,6 @@ interface BlogPostContentProps {
 export function BlogPostContent({
   blogPost,
   relatedPosts,
-  params,
   loading = false,
 }: BlogPostContentProps) {
   const [relatedLoading, setRelatedLoading] = useState(true);
@@ -71,7 +70,7 @@ export function BlogPostContent({
   return (
     <div className="min-h-screen pt-24">
       {/* Back Button */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 px-4 flex justify-between gap-2 items-center sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/blog">
@@ -79,6 +78,13 @@ export function BlogPostContent({
               Back to Blog
             </Link>
           </Button>
+          {/* Social Share Buttons */}
+          <div className="">
+            <Button variant="outline" size="sm">
+              <Share2 className="h-4 w-4 mr-2" />
+              Share
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -120,7 +126,7 @@ export function BlogPostContent({
           </motion.div>
           <div className="flex items-center w-full space-x-6 justify-between text-sm text-muted-foreground">
             <div className="flex items-center justify-center gap-4 mb-8">
-              <Avatar className="h-12 w-12">
+              <Avatar className="h-10 w-10">
                 <AvatarFallback>
                   {(
                     blogPost?.author?.firstName +
@@ -150,7 +156,6 @@ export function BlogPostContent({
               {blogPost.publishedAt && (
                 <div className="flex items-center text-xs">
                   <Calendar className="h-3 w-3 mr-1" />
-                  Published{" "}
                   {new Date(blogPost.publishedAt).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
@@ -160,13 +165,7 @@ export function BlogPostContent({
               )}
             </div>
           </div>
-          {/* Social Share Buttons */}
-          <div className="flex items-center justify-center gap-2">
-            <Button variant="outline" size="sm">
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
-            </Button>
-          </div>
+          
         </div>
       </section>
 

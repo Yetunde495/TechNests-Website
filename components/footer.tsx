@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
 
 export function Footer() {
   const footerSections = [
@@ -100,12 +99,6 @@ export function Footer() {
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
                 Privacy
-              </Link>
-              <Link
-                href="/cookies"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                Cookies
               </Link>
             </div>
           </div>

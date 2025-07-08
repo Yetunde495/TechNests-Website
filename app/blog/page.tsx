@@ -325,8 +325,8 @@ export default function Blog() {
                     </Card>
                   </motion.div>
                   {featuredPost.length > 1 && (
-                    <div className="flex flex-col gap-4">
-                      {featuredPost?.slice(1)?.map((post, index) => (
+                    <div className="flex flex-col gap-4 max-sm:gap-8">
+                      {featuredPost?.slice(1)?.map((post) => (
                         <motion.div key={post._id} variants={fadeInUp}>
                           <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-4 items-start  hover:shadow-lg transition-shadow duration-300">
                             <div className=" bg-muted">
