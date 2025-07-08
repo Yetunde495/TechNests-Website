@@ -34,7 +34,7 @@ export default function Terms() {
               Terms of Service
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Please read these terms carefully before using TradePro services.
+              Please read these terms carefully before using Technests services.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-2">
@@ -62,10 +62,10 @@ export default function Terms() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    By accessing and using TradePro's services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                    By accessing and using Technests's services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
                   </p>
                   <p>
-                    These Terms of Service ("Terms") govern your use of our website located at tradepro.com (the "Service") operated by TradePro ("us", "we", or "our").
+                    These Terms of Service ("Terms") govern your use of our website located at Technests.com (the "Service") operated by Technests ("us", "we", or "our").
                   </p>
                 </CardContent>
               </Card>
@@ -76,7 +76,7 @@ export default function Terms() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    TradePro provides automated trading signals and precision automation tools for financial markets. Our services include:
+                    Technests provides automated trading signals and precision automation tools for financial markets. Our services include:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Real-time trading signals for various financial instruments</li>
@@ -165,7 +165,7 @@ export default function Terms() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    The Service and its original content, features, and functionality are and will remain the exclusive property of TradePro and its licensors. The Service is protected by copyright, trademark, and other laws.
+                    The Service and its original content, features, and functionality are and will remain the exclusive property of Technests and its licensors. The Service is protected by copyright, trademark, and other laws.
                   </p>
                   <p>
                     Our trademarks and trade dress may not be used in connection with any product or service without our prior written consent.
@@ -179,7 +179,7 @@ export default function Terms() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    In no event shall TradePro, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the Service.
+                    In no event shall Technests, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the Service.
                   </p>
                 </CardContent>
               </Card>
@@ -222,7 +222,7 @@ export default function Terms() {
                   </p>
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4" />
-                    <span>legal@tradepro.com</span>
+                    <span>legal@Technests.com</span>
                   </div>
                 </CardContent>
               </Card>

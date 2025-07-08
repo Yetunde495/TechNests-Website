@@ -291,7 +291,7 @@ export default function Cookies() {
                 </p>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
-                  <span>privacy@tradepro.com</span>
+                  <span>privacy@Technests.com</span>
                 </div>
               </CardContent>
             </Card>

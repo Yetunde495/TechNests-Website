@@ -1,4 +1,4 @@
-// API integration functions for TradePro backend
+// API integration functions for Technests backend
 // These functions simulate real API calls to the backend
 
 export interface User {

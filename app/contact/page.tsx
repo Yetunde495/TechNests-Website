@@ -32,7 +32,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email Support",
     description: "Get help via email within 24 hours",
-    contact: "support@tradepro.com",
+    contact: "support@Technests.com",
     available: "24/7"
   },
   {
@@ -53,7 +53,7 @@ const contactMethods = [
     icon: HeadphonesIcon,
     title: "Premium Support",
     description: "Priority support for Enterprise customers",
-    contact: "enterprise@tradepro.com",
+    contact: "enterprise@Technests.com",
     available: "24/7"
   }
 ];
@@ -150,7 +150,7 @@ export default function Contact() {
               Contact Our Team
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Have questions about TradePro? Our expert team is here to help you 
+              Have questions about Technests? Our expert team is here to help you 
               succeed in your trading journey.
             </p>
           </motion.div>

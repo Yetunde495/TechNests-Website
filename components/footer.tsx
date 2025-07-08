@@ -39,21 +39,26 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground text-sm">
-              Professional trading signals and precision automation for serious
-              traders.
+              TechNests is your AI co-pilot in the world of prop
+              trading—offering end-to-end automation for strategy planning,
+              trade execution, and risk protection. Our platform empowers
+              traders to scale accounts, stay funded, and trade with discipline,
+              without giving up control or ownership of their journey.
             </p>
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
                 <span>support@technests.ai</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+              <div className="hidden items-center space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span>New York, NY</span>
+                <span>
+                  30 North Gould Street, Ste R Sheridan, WY 82801, United States
+                </span>
               </div>
             </div>
           </div>

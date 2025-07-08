@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Golos_Text } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navigation } from '@/components/navigation';
-import { ChatPopup } from '@/components/chat-popup';
+// import { ChatPopup } from '@/components/chat-popup';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/sonner';
 
@@ -11,7 +11,7 @@ import { Toaster } from '@/components/ui/sonner';
 const golos = Golos_Text({ subsets: ['cyrillic'] });
 
 export const metadata: Metadata = {
-  title: 'TradePro Signals - Professional Trading Automation',
+  title: 'Technests Signals - Professional Trading Automation',
   description: 'Advanced trading signals and precision automation for professional traders. Maximize your profits with our AI-powered trading platform.',
 };
 
@@ -34,7 +34,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <ChatPopup />
+          {/* <ChatPopup /> */}
           <Toaster />
         </ThemeProvider>
       </body>

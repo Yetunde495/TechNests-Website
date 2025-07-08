@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,7 +40,7 @@ const initialMessages: Message[] = [
   {
     id: '1',
     type: 'bot',
-    content: "👋 Hi! I'm TradePro's AI assistant. I'm here to help you with questions about our trading platform and services. How can I assist you today?",
+    content: "👋 Hi! I'm Technests's AI assistant. I'm here to help you with questions about our trading platform and services. How can I assist you today?",
     timestamp: new Date()
   }
 ];
@@ -103,7 +103,7 @@ export function ChatPopup() {
       const welcomeMessage: Message = {
         id: Date.now().toString(),
         type: 'bot',
-        content: `Welcome ${name}! 🎉 Thanks for joining our community. I'm here to answer any questions about TradePro. What would you like to know?`,
+        content: `Welcome ${name}! 🎉 Thanks for joining our community. I'm here to answer any questions about Technests. What would you like to know?`,
         timestamp: new Date()
       };
 
@@ -113,7 +113,7 @@ export function ChatPopup() {
       }));
 
       toast({
-        title: "Welcome to TradePro!",
+        title: "Welcome to Technests!",
         description: "You can now chat with our AI assistant."
       });
 
@@ -294,13 +294,13 @@ export function ChatPopup() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src="/logo.png" alt="TradePro AI" />
+                      <AvatarImage src="/logo.png" alt="Technests AI" />
                       <AvatarFallback>
                         <Bot className="h-4 w-4" />
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <CardTitle className="text-base">TradePro Assistant</CardTitle>
+                      <CardTitle className="text-base">Technests Assistant</CardTitle>
                       <CardDescription className="text-xs">
                         {chatState.isEmailCaptured ? "Online • Typically replies instantly" : "Get instant answers"}
                       </CardDescription>

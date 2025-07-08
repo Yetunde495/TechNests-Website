@@ -97,7 +97,9 @@ export default function Pricing() {
               <button
                 onClick={() => setIsYearly(false)}
                 className={`px-4 py-2 rounded-md transition-all ${
-                  !isYearly ? "bg-background shadow-sm" : "text-muted-foreground"
+                  !isYearly
+                    ? "bg-background shadow-sm"
+                    : "text-muted-foreground"
                 }`}
               >
                 Monthly
@@ -105,9 +107,7 @@ export default function Pricing() {
               <button
                 onClick={() => setIsYearly(true)}
                 className={`px-4 py-2 rounded-md transition-all ${
-                  isYearly
-                    ? "bg-background shadow-sm"
-                    : "text-muted-foreground"
+                  isYearly ? "bg-background shadow-sm" : "text-muted-foreground"
                 }`}
               >
                 Yearly
@@ -190,7 +190,7 @@ export default function Pricing() {
                         size="lg"
                         asChild
                       >
-                        <Link href="/pricing">
+                        <Link target="_blank" href={plan.cta.link}>
                           {plan.cta.text}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
