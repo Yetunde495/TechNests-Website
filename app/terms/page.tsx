@@ -1,19 +1,15 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  FileText,
-  Calendar,
-  Mail
-} from 'lucide-react';
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FileText, Calendar } from "lucide-react";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
+// const fadeInUp = {
+//   initial: { opacity: 0, y: 60 },
+//   animate: { opacity: 1, y: 0 },
+//   transition: { duration: 0.6 },
+// };
 
 export default function Terms() {
   return (
@@ -31,7 +27,7 @@ export default function Terms() {
               Legal Documents
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Terms of Service
+              Technests Terms of Service
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Please read these terms carefully before using Technests services.
@@ -62,10 +58,15 @@ export default function Terms() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    By accessing and using Technests's services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                    By accessing and using Technests's services, you accept and
+                    agree to be bound by the terms and provision of this
+                    agreement. If you do not agree to abide by the above, please
+                    do not use this service.
                   </p>
                   <p>
-                    These Terms of Service ("Terms") govern your use of our website located at Technests.com (the "Service") operated by Technests ("us", "we", or "our").
+                    These Terms of Service ("Terms") govern your use of our
+                    website located at Technests.ai (the "Service") operated by
+                    Technests ("us", "we", or "our").
                   </p>
                 </CardContent>
               </Card>
@@ -76,154 +77,164 @@ export default function Terms() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    Technests provides automated trading signals and precision automation tools for financial markets. Our services include:
+                    Technests is a locally-installed software solution designed
+                    to support structured trading within the NinjaTrader 8
+                    desktop environment. The platform operates entirely on the
+                    user’s local system and does not utilize cloud storage,
+                    APIs, or external data transmission. Our services include:
                   </p>
+
+                  <p>
+                    We provide tools for strategy automation, rule enforcement,
+                    and disciplined execution. It is not a broker-dealer,
+                    investment advisor, or trading signal provider. The software
+                    does not execute trades autonomously on behalf of any
+                    financial institution.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>3. User Responsibility</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p>
+                    All trading decisions, executions, and outcomes are the sole
+                    responsibility of the user. Technests does not guarantee
+                    profitability or prevent losses. Use of the platform implies
+                    acknowledgment and acceptance of full trading risk.{" "}
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>4. Refund and Cancellation Policy</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p>
+                    All purchases are final. Technests maintains a no-refund
+                    policy across all subscription tiers, regardless of
+                    performance outcomes, technical conditions, or usage levels.
+                    Users may cancel their subscription at any time; access
+                    remains valid through the end of the billing cycle.{" "}
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>5. Subscription Structure</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p>Users may subscribe under the following tiers:</p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Real-time trading signals for various financial instruments</li>
-                    <li>Automated trading execution capabilities</li>
-                    <li>Risk management tools and analytics</li>
-                    <li>Educational resources and market analysis</li>
-                    <li>Customer support and technical assistance</li>
+                    <li>Starter: Up to 5 evaluation and 5 funded accounts</li>
+                    <li>Growth: Up to 10 evaluation and 10 funded accounts</li>
+                    <li>Elite: Unlimited accounts</li>
                   </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>3. User Accounts</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
                   <p>
-                    When you create an account with us, you must provide information that is accurate, complete, and current at all times. You are responsible for safeguarding the password and for all activities that occur under your account.
-                  </p>
-                  <p>
-                    You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.
+                    Subscriptions automatically renew unless cancelled before
+                    the renewal date. You may cancel your subscription at any
+                    time through your account settings.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>4. Financial Risk Disclosure</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="font-semibold text-destructive">
-                    IMPORTANT: Trading financial instruments involves substantial risk and may not be suitable for all investors.
-                  </p>
-                  <p>
-                    You acknowledge and understand that:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Past performance is not indicative of future results</li>
-                    <li>You may lose some or all of your invested capital</li>
-                    <li>Trading signals are for informational purposes only</li>
-                    <li>You are solely responsible for your trading decisions</li>
-                    <li>We do not guarantee profits or prevent losses</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>5. Subscription and Payment Terms</CardTitle>
+                  <CardTitle>
+                    6. User-Generated Content and Disclaimers
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis ("Billing Cycle").
-                  </p>
-                  <p>
-                    A valid payment method, including credit card, is required to process the payment for your subscription. You shall provide accurate and complete billing information.
-                  </p>
-                  <p>
-                    Subscriptions automatically renew unless cancelled before the renewal date. You may cancel your subscription at any time through your account settings.
+                    Testimonials, account screenshots, and user-submitted
+                    performance data may appear on Technests’ marketing
+                    channels, including websites and social platforms. These
+                    materials are submitted voluntarily and are not
+                    independently reviewed or verified. Such content should not
+                    be interpreted as representative, typical, or indicative of
+                    future results.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>6. Prohibited Uses</CardTitle>
+                  <CardTitle>7. Termination and Fair Use</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    You may not use our Service:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>For any unlawful purpose or to solicit others to perform unlawful acts</li>
-                    <li>To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances</li>
-                    <li>To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
-                    <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
-                    <li>To submit false or misleading information</li>
-                    <li>To upload or transmit viruses or any other type of malicious code</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>7. Intellectual Property Rights</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p>
-                    The Service and its original content, features, and functionality are and will remain the exclusive property of Technests and its licensors. The Service is protected by copyright, trademark, and other laws.
-                  </p>
-                  <p>
-                    Our trademarks and trade dress may not be used in connection with any product or service without our prior written consent.
+                    Technests reserves the right to suspend or revoke access in
+                    cases of misuse, license sharing, reverse engineering,
+                    unauthorized redistribution, or violation of these terms. No
+                    refunds will be issued in the event of termination due to
+                    breach.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>8. Limitation of Liability</CardTitle>
+                  <CardTitle>8. Support and Communication</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    In no event shall Technests, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the Service.
+                    Technical support is provided via email only. No phone or
+                    live chat support is currently offered. Inquiries may take
+                    up to 72 hours for response.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>9. Termination</CardTitle>
+                  <CardTitle>9. Governing Law and Dispute Resolution</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.
-                  </p>
-                  <p>
-                    If you wish to terminate your account, you may simply discontinue using the Service or contact us to request account deletion.
+                    These Terms and Conditions are governed by the laws of the
+                    State of California, United States. Any disputes arising
+                    under or in connection with the use of the Technests
+                    platform will be resolved via arbitration in Los Angeles
+                    County, California.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>10. Changes to Terms</CardTitle>
+                  <CardTitle>10. Disclaimer of Warranties</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days notice prior to any new terms taking effect.
-                  </p>
-                  <p>
-                    What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms.
+                    The software is provided “as-is” and “as-available.”
+                    Technests disclaims all express or implied warranties,
+                    including but not limited to fitness for a particular
+                    purpose, merchantability, or performance outcomes.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>11. Contact Information</CardTitle>
+                  <CardTitle>11. Changes to Terms</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p>
-                    If you have any questions about these Terms of Service, please contact us:
+                    We reserve the right, at our sole discretion, to modify or
+                    replace these Terms at any time. If a revision is material,
+                    we will provide at least 30 days notice prior to any new
+                    terms taking effect.
                   </p>
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
-                    <span>legal@Technests.com</span>
-                  </div>
+                  <p>
+                    What constitutes a material change will be determined at our
+                    sole discretion. By continuing to access or use our Service
+                    after any revisions become effective, you agree to be bound
+                    by the revised terms.
+                  </p>
                 </CardContent>
               </Card>
             </div>

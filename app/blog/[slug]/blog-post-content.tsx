@@ -71,7 +71,7 @@ export function BlogPostContent({
     <div className="min-h-screen pt-24">
       {/* Back Button */}
       <section className="py-8 px-4 flex justify-between gap-2 items-center sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl flex justify-between items-center mx-auto">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/blog">
               <ArrowLeft className="mr-2 h-4 w-4" />
