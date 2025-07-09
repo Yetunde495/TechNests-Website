@@ -38,7 +38,7 @@ const faqs = [
   {
     question: "Do you offer a free trial?",
     answer:
-      "Yes, we offer a 7-day free trial for all new users. No credit card required to start.",
+      "No, we do not offer a free trial.",
   },
   {
     question: "What trading markets do you support?",
@@ -267,11 +267,11 @@ export default function Pricing() {
               Ready to Start Trading Smarter?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Join thousands of successful traders. Start your free trial today.
+              Join thousands of successful traders. Select a plan and get access to Smarter trades.
             </p>
             <Button size="lg" className="text-lg px-8 py-6" asChild>
               <Link href="/pricing">
-                Start Free Trial
+                 Get started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

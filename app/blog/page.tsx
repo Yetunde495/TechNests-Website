@@ -607,18 +607,11 @@ export default function Blog() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center py-8">
               <Button size="lg" className="text-lg px-8 py-6" asChild>
                 <Link href="/pricing">
-                  Start Your Free Trial
+                  View Pricing
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6"
-                asChild
-              >
-                <Link href="/pricing">View Pricing</Link>
-              </Button>
+             
             </div>
           </motion.div>
         </div>
