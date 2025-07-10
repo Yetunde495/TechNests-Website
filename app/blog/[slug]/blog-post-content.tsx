@@ -71,13 +71,15 @@ export function BlogPostContent({
     <div className="min-h-screen pt-24">
       {/* Back Button */}
       <section className="py-8 px-4 flex justify-between gap-2 items-center sm:px-6 lg:px-8">
-        <div className="max-w-4xl flex justify-between items-center mx-auto">
+        <div className="">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/blog">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Link>
           </Button>
+        
+        </div>
           {/* Social Share Buttons */}
           <div className="">
             <Button variant="outline" size="sm">
@@ -85,7 +87,6 @@ export function BlogPostContent({
               Share
             </Button>
           </div>
-        </div>
       </section>
 
       {/* Article Header */}
@@ -179,8 +180,8 @@ export function BlogPostContent({
             className="prose prose-lg dark:prose-invert max-w-none"
           >
             <div className="w-full flex flex-col justify-center items-center">
-              <div data-color-mode="light" className="w-full">
-                <div className="wmde-markdown-var">
+              <div data-color-mode="light" className="w-full prose dark:prose-invert max-w-none">
+                <div className="wmde-markdown-var dark:dark-wmde w-full prose dark:prose-invert max-w-none">
                   <MDEditor.Markdown
                     source={blogPost?.content || ""}
                     style={{

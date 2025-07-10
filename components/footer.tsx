@@ -17,7 +17,7 @@ export function Footer() {
     {
       title: "Support",
       links: [
-        { href: "/contact", label: "Contact" },
+        // { href: "/contact", label: "Contact" },
         { href: "/terms", label: "Terms of Service" },
         { href: "/privacy", label: "Privacy Policy" },
         { href: "/prop-firm-disclaimer", label: "Prop Firm Disclaimer Policy" },

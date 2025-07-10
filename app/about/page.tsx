@@ -661,7 +661,7 @@ export default function About() {
               "Professionals seeking passive income",
             ].map((val, index) => (
               <motion.div key={index} variants={fadeInUp} className="h-25">
-                <div className="bg-white dark:bg-black/90ss p-4 rounded-lg h-full shadow text-left">
+                <div className="bg-white dark:bg-black/90 p-4 rounded-lg h-full shadow text-left">
                   <User className=" text-[#08B0FF]" />
                   {val}
                 </div>
