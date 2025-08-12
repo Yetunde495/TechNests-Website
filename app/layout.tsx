@@ -3,11 +3,9 @@ import type { Metadata } from 'next';
 import { Golos_Text } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navigation } from '@/components/navigation';
-// import { ChatPopup } from '@/components/chat-popup';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/sonner';
 
-// const inter = Inter({ subsets: ['latin'] });
 const golos = Golos_Text({ subsets: ['cyrillic'] });
 
 export const metadata: Metadata = {
@@ -34,7 +32,6 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          {/* <ChatPopup /> */}
           <Toaster />
         </ThemeProvider>
       </body>
