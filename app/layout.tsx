@@ -6,7 +6,7 @@ import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/sonner';
 import { ServiceWorkerRegister } from '@/components/service-worker';
-import { InstallButton } from '@/components/install-prompt';
+import { InstallToast } from '@/components/install-prompt';
 
 const golos = Golos_Text({ subsets: ['cyrillic'] });
 
@@ -90,7 +90,7 @@ export default function RootLayout({
           <Toaster />
         </ThemeProvider>
          <ServiceWorkerRegister />
-         <InstallButton />
+         <InstallToast />
       </body>
     </html>
   );
