@@ -278,26 +278,20 @@ export default function Home() {
             className="text-center"
           >
             <div className="flex items-center flex-wrap justify-center gap-1 sm:gap-2.5 max-sm:gap-1">
-              <Badge variant="outline" className="mb-4 p-1 sm:px-4 sm:py-2">
-                <Shield className="w-4 h-4 mr-2 text-[#08B0FF]" />
-                Privacy First
-              </Badge>{" "}
+              
               <Badge variant="outline" className="mb-4 p-1 sm:px-4 sm:py-2">
                 <MonitorSmartphone className="w-4 h-4 mr-2 text-[#CD12DF]" />
                 Runs Locally
               </Badge>{" "}
-              <Badge variant="outline" className="mb-4 sm:px-4 sm:py-2 p-1">
-                <CircleCheckBig className="w-4 h-4 mr-2 text-[#17C964]" />
-                67% Success Rate
-              </Badge>
+              
             </div>
 
             <h1 className="text-center lg:text-6xl sm:text-5xl font-bold text-4xl text-slate-900 dark:text-white tracking-tight mb-6">
-             Build your Live <br />{" "}
-              <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">
-                Professional Portfolio
-              </span>
-              in minutes
+             Build your Live Professional Portfolio in minutes 
+              {/* <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">
+                
+              </span> */}
+              
             </h1>
 
             <p className="text-base text-[#374758] dark:text-zinc-100 mb-8 max-w-3xl mx-auto">

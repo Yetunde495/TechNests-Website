@@ -38,17 +38,17 @@ export function InstallToast() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 left-1/2 z-50 w-[90%] max-w-sm -translate-x-1/2 rounded-2xl bg-white dark:bg-neutral-900 shadow-lg border border-neutral-200 dark:border-neutral-800 p-4 flex items-start gap-3"
+          className="fixed bottom-6 right-[10px] z-50 w-[90%] max-w-sm -translate-x-1/2 rounded-xl bg-white dark:bg-neutral-900 shadow-md border border-neutral-200 dark:border-neutral-800 p-4"
         >
           <div className="flex-1">
-            <h3 className="font-semibold text-neutral-800 dark:text-neutral-100">
+            <h3 className="font-semibold text-neutral-800 !m-0 dark:text-neutral-100">
               Install LiveFolio
             </h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="text-sm text-neutral-600 mt-1 dark:text-neutral-400">
               Get quick access from your home screen.
             </p>
           </div>
-          <div className="flex gap-2 mt-1">
+          <div className="flex justify-end gap-2 mt-1">
             <button
               onClick={handleInstall}
               className="bg-purple-600 text-white text-sm px-3 py-1.5 rounded-lg hover:bg-purple-700 transition"
