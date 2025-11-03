@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiveFolio - Offline</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .offline-container {
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .offline-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 1.875rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: #666666;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .offline-button {
+      background-color: #a78bfa;
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .offline-button:hover {
+      background-color: #9370d1;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #0f0f0f;
+        color: #ffffff;
+      }
+
+      p {
+        color: #999999;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="offline-icon">📡</div>
+    <h1>You're Offline</h1>
+    <p>
+      It looks like you've lost your internet connection. Please check your
+      connection and try again.
+    </p>
+    <button class="offline-button" onclick="location.reload()">
+      Try Again
+    </button>
+  </div>
+</body>
+</html>

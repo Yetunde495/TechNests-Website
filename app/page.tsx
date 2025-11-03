@@ -293,17 +293,18 @@ export default function Home() {
             </div>
 
             <h1 className="text-center lg:text-6xl sm:text-5xl font-bold text-4xl text-slate-900 dark:text-white tracking-tight mb-6">
-              Precision Automation for <br /> Serious{" "}
+             Build your Live <br />{" "}
               <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">
-                Prop-Traders
+                Professional Portfolio
               </span>
+              in minutes
             </h1>
 
             <p className="text-base text-[#374758] dark:text-zinc-100 mb-8 max-w-3xl mx-auto">
-              Technests is the next-generation platform for serious traders and
-              trading communities. Get premium prop trading signals and unleash
-              automated content that builds authority and drives traffic — all
-              from one powerful system.
+               Turn your experience into a professional portfolio website — without
+              hiring a designer or paying for hosting. Create, customize, and share
+              a personal link that lets recruiters view your profile, download your
+              CV, and reach out instantly.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

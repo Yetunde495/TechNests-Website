@@ -205,7 +205,6 @@ const testimonials = [
 ];
 
 export default function About() {
-  const words = ["winning", "trading"];
   const [loading, setLoading] = useState(true);
   const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
 
@@ -252,7 +251,9 @@ export default function About() {
               layout
             >
               <div className="inline-block">
-                We Build Bots. You Focus on <ContainerTextFlip words={words} />
+                We Build Bots. You Focus on {" "}  <span className="py-2 gradient-text !bg-clip-text text-transparent inline-block">
+                Trading
+              </span> 
                 {/* <Blips /> */}
               </div>
             </motion.h1>
